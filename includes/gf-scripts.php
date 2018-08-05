@@ -6,6 +6,8 @@ function gf_add_frontend_scripts(){
     wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.1.1/css/all.css');
 //     Widget specific css
     wp_enqueue_style('gf-social-icons-css', plugins_url() . '/gf-widgets/css/gf-social-icons-widget.css');
+    wp_enqueue_style('gf-social-icons-css', plugins_url() . '/gf-widgets/css/gf-product-slider-widget.css');
+
 
 
 }
