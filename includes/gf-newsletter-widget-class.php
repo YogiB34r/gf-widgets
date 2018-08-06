@@ -26,17 +26,15 @@ class gf_newsletter_widget extends WP_Widget {
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
-		echo '<div class="panel panel-default">                 
-                        <div class="panel-body">
-                            <p><b>Get our Daily News Newsletter:</b></p>
-                            <form class="form-inline" action="" method="post">
-                            <div class="form-group">
-                              <input type="email" class="form-control" placeholder="Enter your email">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Subscribe</button>
-                          </form>
-                        </div>
-                      </div>';
+		echo '<div class="panel panel-default gf-newsletter">
+	          <div class="panel-body gf-newsletter__body">
+	              <p class="gf-newsletter__title"><b class="gf-newsletter__subtitle">Get our Daily News Newsletter:</b></p>
+	              <form class="form-inline gf-newsletter__form" action="" method="post">
+								<input type="email" class="form-control input-lg gf-newsletter__input" placeholder="Enter your email">
+	              <button type="submit" class="btn btn-block gf-newsletter__submit">Subscribe</button>
+	            </form>
+	          </div>
+					</div>';
 		echo $args['after_widget'];
 	}
 
@@ -52,20 +50,15 @@ class gf_newsletter_widget extends WP_Widget {
         ?>
 
 
-<!--         TITLE -->
-		<p>
-		    <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
+	<!--         TITLE -->
+	<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
                 <?php esc_attr_e( 'Title:', 'gf_newsletter_widget_domain' ); ?>
             </label>
 
-		    <input
-                class="widefat"
-                id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
-                name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
-                type="text"
-                value="<?php echo esc_attr( $title ); ?>">
-		</p>
-		<?php 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+	</p>
+	<?php
 	}
 
 	/**
