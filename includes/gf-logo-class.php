@@ -24,9 +24,8 @@ class gf_custom_logo_widget extends WP_Widget {
     public function widget( $args, $instance ) {
         echo $args['before_widget'];
 
-        echo '<a href="'.get_home_url().'">
-                    <img class="gf-header-logo" src="'.$instance['logo_image_value'].'" >
-              </a>';
+        require(realpath(__DIR__ . '/../template-parts/gf-logo.php'));
+
         echo $args['after_widget'];
     }
 

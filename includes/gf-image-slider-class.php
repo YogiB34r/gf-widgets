@@ -29,36 +29,9 @@ class gf_image_slider_widget extends WP_Widget
         if (!empty($instance['title'])) {
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
-        echo '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                  </ol>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a href="'.$instance['image_1_link'].'">
-                            <img class="d-block w-100" src="'.$instance['image_1_value'].'" alt="First slide">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="'.$instance['image_2_link'].'">
-                            <img class="d-block w-100" src="'.$instance['image_2_value'].'" alt="First slide">
-                        </a>                    </div>
-                    <div class="carousel-item">
-                        <a href="'.$instance['image_3_link'].'">
-                            <img class="d-block w-100" src="'.$instance['image_3_value'].'" alt="First slide">
-                        </a>                    </div>
-                  </div>
-                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>';
+
+        require(realpath(__DIR__ . '/../template-parts/gf-image-slider.php'));
+
         echo $args['after_widget'];
     }
 

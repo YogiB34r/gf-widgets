@@ -24,7 +24,8 @@ class gf_contact_phone_widget extends WP_Widget {
     public function widget( $args, $instance ) {
         echo $args['before_widget'];
 
-        echo '<div class="phone"><i class="fas fa-phone"></i>'.$instance['contact_phone'].'</div>';
+        require(realpath(__DIR__ . '/../template-parts/gf-contact-phone.php'));
+
         echo $args['after_widget'];
     }
 
