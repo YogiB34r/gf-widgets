@@ -11,7 +11,7 @@
 
 
 .gf-product-slider {
-  padding: 20px;
+  padding: 0 20px;
   margin: 35px 0;
 }
 
@@ -25,7 +25,6 @@
 .gf-product-slider__header__title {
   color: #1d1d1d;
   font-weight: 600;
-  text-transform: uppercase;
   font-size: 20px;
 }
 
@@ -37,20 +36,32 @@
   align-items: center;
 }
 
-.slider-item h5{
-  font-size: 1.1em;
+
+.slider-item {
+  width: 100%;
+  height: auto;
+  padding: 0 8px;
+}
+
+.slider-item a:hover {
+  color: #666;
+}
+
+.slider-item h5 {
+  font-size: 0.75em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.slider-item .add_to_cart_button:hover {
+  color: #f45411;
 }
 
 .slick-prev:before, .slick-next:before {
   z-index: 1000;
   font-size: 45px;
   color: #f45411;
-}
-
-.slider-item {
-  width: 100%;
-  height: auto;
-  padding: 0 8px;
 }
 
 .widget_gf_product_slider_widget {
