@@ -1,3 +1,5 @@
+
+
 <div class="panel panel-default gf-newsletter">
     <div class="panel-body gf-newsletter__body">
         <p class="gf-newsletter__title"><b class="gf-newsletter__subtitle">Get our Daily News Newsletter:</b></p>

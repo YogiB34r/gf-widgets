@@ -1,5 +1,4 @@
 <?php
-
 class gf_newsletter_widget extends WP_Widget {
 
 	/**
