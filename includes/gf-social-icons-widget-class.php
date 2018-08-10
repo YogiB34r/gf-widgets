@@ -1,5 +1,4 @@
 <?php
-
 class gf_social_icons_widget extends WP_Widget
 {
 

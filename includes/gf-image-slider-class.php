@@ -1,5 +1,4 @@
 <?php
-
 class gf_image_slider_widget extends WP_Widget
 {
 

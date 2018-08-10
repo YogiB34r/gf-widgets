@@ -1,5 +1,4 @@
 <?php
-
 class gf_contact_phone_widget extends WP_Widget {
 
     /**

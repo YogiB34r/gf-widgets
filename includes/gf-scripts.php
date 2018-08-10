@@ -1,5 +1,4 @@
 <?php
-
 function gf_add_frontend_scripts(){
     wp_enqueue_style('gf-main-css', plugins_url() . '/gf-widgets/css/gf-widget-main.css');
     // Font awesome

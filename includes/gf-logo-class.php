@@ -1,5 +1,4 @@
 <?php
-
 class gf_custom_logo_widget extends WP_Widget {
 
     /**
