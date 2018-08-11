@@ -14,11 +14,12 @@
  * Version:     1.0.0
  * Author:      Green Friends
  * Author URI:  https://example.com
- * Text Domain: plugin-name
+ * Text Domain: gf-widgets
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
+load_plugin_textdomain( 'gf-widgets', '', plugins_url().'/gf-widgets/languages' );
 
 
 require_once(plugin_dir_path(__FILE__) . '/includes/gf-scripts.php');

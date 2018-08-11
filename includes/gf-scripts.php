@@ -4,6 +4,13 @@ function gf_add_frontend_scripts(){
     // Font awesome
     wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.1.1/css/all.css');
     // Widget specific css
+
+//    jQuerry UI
+    wp_enqueue_style('jQuerry-ui' ,'//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+    wp_enqueue_script('jquery-ui-tabs');
+
+
+
     wp_enqueue_style('gf-social-icons-css', plugins_url() . '/gf-widgets/css/gf-social-icons-widget.css');
     wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css');
     wp_enqueue_style('slick-theme-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css');

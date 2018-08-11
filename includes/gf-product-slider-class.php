@@ -56,9 +56,13 @@ class gf_product_slider_widget extends WP_Widget
             'parent' => $slider_id
         );
         $slider_cat = get_terms('product_cat', $cat_args);
+        if(isset($instance['category_select'])){
+            $slider_cat_id = get_term_by('slug', $instance['category_select'],'product_cat')->term_id;
+            $childless_cat = get_terms('product_cat', array('parent' => $slider_cat_id));
+        }
         if (!empty($instance['category_select'])){
             $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
-            $product_count =$category_term->count;
+            $product_count = $category_term->count;
         }
         if(isset($instance['number_of_columns']) and !empty($instance['number_of_columns'])){
             if ($product_count < $instance['number_of_columns']) {
@@ -111,62 +115,62 @@ class gf_product_slider_widget extends WP_Widget
 
 <!--            TABS-->
             <label for="<?php echo esc_attr( $this->get_field_id( 'tab_1' ) ); ?>">
-                <?php esc_attr_e( 'Tab 1', 'gf_product_slider_widget_domain' ); ?>
+                <?php esc_attr_e( 'Select Category Tab 1', 'gf_product_slider_widget_domain' ); ?>
             </label>
             <select
                     class="gf-category-select widefat"
                     id="<?php echo esc_attr($this->get_field_id('tab_1')); ?>"
                     name="<?php echo esc_attr($this->get_field_name('tab_1')); ?>">
-                <option value=""><?php _e('Select category')?></option>
-                <?php foreach ($slider_cat as $slider_cat_child) : ?>
+                <option value=""><?php _e('none')?></option>
+                <?php foreach ($childless_cat as $slider_cat_child) : ?>
                     <option value="<?=$slider_cat_child->slug?>"><?=$slider_cat_child->name?></option>
                 <?php endforeach;?>
             </select>
             <label for="<?php echo esc_attr( $this->get_field_id( 'tab_2' ) ); ?>">
-                <?php esc_attr_e( 'Tab 2', 'gf_product_slider_widget_domain' ); ?>
+                <?php esc_attr_e( 'Select Category Tab 2', 'gf_product_slider_widget_domain' ); ?>
             </label>
             <select
             class="gf-category-select widefat"
             id="<?php echo esc_attr($this->get_field_id('tab_2')); ?>"
             name="<?php echo esc_attr($this->get_field_name('tab_2')); ?>">
-            <option value=""><?php _e('Select category')?></option>
-            <?php foreach ($slider_cat as $slider_cat_child) : ?>
+            <option value=""><?php _e('none')?></option>
+            <?php foreach ($childless_cat as $slider_cat_child) : ?>
                 <option value="<?=$slider_cat_child->slug?>"><?=$slider_cat_child->name?></option>
             <?php endforeach;?>
             </select>
             <label for="<?php echo esc_attr( $this->get_field_id( 'tab_3' ) ); ?>">
-                <?php esc_attr_e( 'Tab 3', 'gf_product_slider_widget_domain' ); ?>
+                <?php esc_attr_e( 'Select Category Tab 3', 'gf_product_slider_widget_domain' ); ?>
             </label>
             <select
             class="gf-category-select widefat"
             id="<?php echo esc_attr($this->get_field_id('tab_3')); ?>"
             name="<?php echo esc_attr($this->get_field_name('tab_3')); ?>">
-            <option value=""><?php _e('Select category')?></option>
-            <?php foreach ($slider_cat as $slider_cat_child) : ?>
+            <option value=""><?php _e('none')?></option>
+            <?php foreach ($childless_cat as $slider_cat_child) : ?>
                 <option value="<?=$slider_cat_child->slug?>"><?=$slider_cat_child->name?></option>
             <?php endforeach;?>
             </select>
             <label for="<?php echo esc_attr( $this->get_field_id( 'tab_4' ) ); ?>">
-                <?php esc_attr_e( 'Tab 4', 'gf_product_slider_widget_domain' ); ?>
+                <?php esc_attr_e( 'Select Category Tab 4', 'gf_product_slider_widget_domain' ); ?>
             </label>
             <select
             class="gf-category-select widefat"
             id="<?php echo esc_attr($this->get_field_id('tab_4')); ?>"
             name="<?php echo esc_attr($this->get_field_name('tab_4')); ?>">
-            <option value=""><?php _e('Select category')?></option>
-            <?php foreach ($slider_cat as $slider_cat_child) : ?>
+            <option value=""><?php _e('none')?></option>
+            <?php foreach ($childless_cat as $slider_cat_child) : ?>
                 <option value="<?=$slider_cat_child->slug?>"><?=$slider_cat_child->name?></option>
             <?php endforeach;?>
             </select>
             <label for="<?php echo esc_attr( $this->get_field_id( 'tab_5' ) ); ?>">
-                <?php esc_attr_e( 'Tab 5', 'gf_product_slider_widget_domain' ); ?>
+                <?php esc_attr_e( 'Select Category Tab 5', 'gf_product_slider_widget_domain' ); ?>
             </label>
             <select
             class="gf-category-select widefat"
             id="<?php echo esc_attr($this->get_field_id('tab_5')); ?>"
             name="<?php echo esc_attr($this->get_field_name('tab_5')); ?>">
-            <option value=""><?php _e('Select category')?></option>
-            <?php foreach ($slider_cat as $slider_cat_child) : ?>
+            <option value=""><?php _e('none')?></option>
+            <?php foreach ($childless_cat as $slider_cat_child) : ?>
                 <option value="<?=$slider_cat_child->slug?>"><?=$slider_cat_child->name?></option>
             <?php endforeach;?>
             </select>

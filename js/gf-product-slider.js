@@ -19,4 +19,5 @@ jQuery(document).ready(function($) {
     var currentSlider = $(this).parent().parent().closest('.slider-inner').slick("slickNext");
     currentSlider.slick("slickNext");
   });
+    $( "#tabs" ).tabs();
 });

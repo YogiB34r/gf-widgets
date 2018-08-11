@@ -27,6 +27,15 @@
   font-weight: 600;
   font-size: 20px;
 }
+.gf-product-slider__tabs{
+  margin-left: auto;
+}
+.gf-product-slider__tabs ul{
+  padding: 0 !important;
+}
+.gf-product-slider__tabs ul li{
+  margin: 0 !important;
+}
 
 .gf-product-slider__header a.gf-product-slider__header-control {
 }
