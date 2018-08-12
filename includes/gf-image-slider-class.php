@@ -25,11 +25,7 @@ class gf_image_slider_widget extends WP_Widget
     public function widget($args, $instance)
     {
         echo $args['before_widget'];
-        if (!empty($instance['title'])) {
-            echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
-        }
-
-        require(realpath(__DIR__ . '/../template-parts/gf-image-slider.php'));
+            require(realpath(__DIR__ . '/../template-parts/gf-image-slider.php'));
 
         echo $args['after_widget'];
     }
@@ -43,6 +39,7 @@ class gf_image_slider_widget extends WP_Widget
      */
     public function form($instance)
     {
+
         $image_1 = !empty($instance['image_1']) ? $instance['image_1'] : esc_html__('', 'gf_image_slider_widget_domain');
         $image_1_value = !empty($instance['image_1_value']) ? $instance['image_1_value'] : esc_html__('', 'gf_image_slider_widget_domain');
         $image_1_link = !empty($instance['image_1_link']) ? $instance['image_1_link'] : esc_html__('https://', 'gf_image_slider_widget_domain');
@@ -54,7 +51,6 @@ class gf_image_slider_widget extends WP_Widget
         $image_3 = !empty($instance['image_3']) ? $instance['image_3'] : esc_html__('Image 3', 'gf_image_slider_widget_domain');
         $image_3_value = !empty($instance['image_3_value']) ? $instance['image_3_value'] : esc_html__('', 'gf_image_slider_widget_domain');
         $image_3_link = !empty($instance['image_3_link']) ? $instance['image_3_link'] : esc_html__('https://', 'gf_image_slider_widget_domain');
-
         ?>
 
         <div>
@@ -120,6 +116,7 @@ class gf_image_slider_widget extends WP_Widget
                    name="<?php echo esc_attr($this->get_field_name('image_3_link')); ?>"
                    value="<?php echo esc_attr($image_3_link); ?>">
         </div>
+
         <?php
     }
 

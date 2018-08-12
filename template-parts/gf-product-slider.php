@@ -10,6 +10,7 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
 } else {
     $slider_title = $category_term->name;
 }
+$columnCount = $instance['number_of_columns'];
 ?>
 
 <div id="<?php echo $random_id; ?>" class="gf-product-slider">
@@ -197,3 +198,6 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
     </div>
     <!--    slider-inner-->
 </div>
+<script>
+    var gfSliderColumnCount = <?=$columnCount;?>;
+</script>

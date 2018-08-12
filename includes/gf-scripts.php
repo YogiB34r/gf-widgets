@@ -1,6 +1,5 @@
 <?php
 function gf_add_frontend_scripts(){
-    wp_enqueue_style('gf-main-css', plugins_url() . '/gf-widgets/css/gf-widget-main.css');
     // Font awesome
     wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.1.1/css/all.css');
     // Widget specific css
@@ -22,6 +21,7 @@ add_action('wp_enqueue_scripts', 'gf_add_frontend_scripts');
 
 function gf_add_backend_scripts(){
     wp_enqueue_media();
+    wp_enqueue_style('gf-product-slider-admin', plugins_url() . '/gf-widgets/css/gf-product-slider-admin.css');
     wp_enqueue_style('gf-social-icons-admin-css', plugins_url() . '/gf-widgets/css/gf-social-icons-admin.css');
     wp_enqueue_script('gf-main-js', plugins_url() . '/gf-widgets/js/gf-widget-main.js', array('jquery'), '1.0.0', 'true');
 }
