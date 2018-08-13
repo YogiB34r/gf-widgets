@@ -49,7 +49,7 @@ jQuery(document).ready(function($) {
 //GF- product slider
     $('#gf-homepage-row-2').on('change', '.gf-category-select', function(){
         $('#widget-gf_product_slider_widget-12-savewidget').click();
-        console.log('hi')
+        console.log('save');
     });
 
 /* show lightbox when clicking a thumbnail */
