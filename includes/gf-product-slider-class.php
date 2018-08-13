@@ -58,11 +58,11 @@ class gf_product_slider_widget extends WP_Widget
             'parent' => $slider_id
         );
         $slider_cat = get_terms('product_cat', $cat_args);
-        if (isset($instance['category_select'])) {
+        if (isset($instance['category_select']) && !empty($instance['category_select'])) {
             $slider_cat_id = get_term_by('slug', $instance['category_select'], 'product_cat')->term_id;
             $childless_cat = get_terms('product_cat', array('parent' => $slider_cat_id));
         }
-        if (!empty($instance['category_select'])) {
+        if (isset($instance['category_select']) && !empty($instance['category_select'])) {
             $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
             $product_count = $category_term->count;
         }
