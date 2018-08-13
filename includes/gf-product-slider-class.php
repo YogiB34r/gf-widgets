@@ -32,7 +32,9 @@ class gf_product_slider_widget extends WP_Widget
 
         global $post;
 
-        require(realpath(__DIR__ . '/../template-parts/gf-product-slider.php'));
+        if(isset($instance['category_select'])){
+            require(realpath(__DIR__ . '/../template-parts/gf-product-slider.php'));
+        }
 
         if (isset($args['after_widget'])) {
             echo $args['after_widget'];
@@ -58,10 +60,15 @@ class gf_product_slider_widget extends WP_Widget
             'parent' => $slider_id
         );
         $slider_cat = get_terms('product_cat', $cat_args);
+
+        $slider_cat_id = get_term_by('slug', $slider_cat[0]->slug, 'product_cat')->term_id;
+        $childless_cat = get_terms('product_cat', array('parent' => $slider_cat_id));
+
         if (isset($instance['category_select']) && !empty($instance['category_select'])) {
             $slider_cat_id = get_term_by('slug', $instance['category_select'], 'product_cat')->term_id;
             $childless_cat = get_terms('product_cat', array('parent' => $slider_cat_id));
         }
+
         if (isset($instance['category_select']) && !empty($instance['category_select'])) {
             $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
             $product_count = $category_term->count;
@@ -106,7 +113,6 @@ class gf_product_slider_widget extends WP_Widget
                     id="<?php echo esc_attr($this->get_field_id('category_select')); ?>"
                     name="<?php echo esc_attr($this->get_field_name('category_select')); ?>">
                 <?php foreach ($slider_cat as $slider_cat_child) : ?>
-                    <?php var_dump($slider_cat) ?>
                     <option
                         <?php if (isset($instance['category_select'])) {
                             if ($slider_cat_child->slug == $instance['category_select']) {
