@@ -1,8 +1,11 @@
 jQuery(document).ready(function($) {
+
+
 	//don't start on wrong pages
+
 	if (typeof gfSliderColumnCount !== "undefined") {
 		startSlider('#tabs-0');
-		hookSliderEvents();
+        hookSliderEvents();
 
 		//@Important activate slider after tab is displayed in order to have access to proper width
 		$( "#tabs" ).tabs({
@@ -13,7 +16,7 @@ jQuery(document).ready(function($) {
 			}
 		});
 	}
-	
+
     function startSlider(selector) {
         $(selector).slick({
             infinite: true,
@@ -24,9 +27,9 @@ jQuery(document).ready(function($) {
             nextArrow: '<div class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>'
         });
     }
-	
+
 	function hookSliderEvents() {
-		$('.product-slider__control-prev').click(function (e) {
+		$('#tabs .product-slider__control-prev').click(function (e) {
   		    e.preventDefault();
 		    $('.slider-inner').each(function(key, value) {
 			    if ($(value).attr('aria-hidden') == 'false') {
@@ -35,14 +38,23 @@ jQuery(document).ready(function($) {
 		  });
 		});
 
-		$('.product-slider__control-next').click(function (e) {
+		$('#tabs .product-slider__control-next').click(function (e) {
 			e.preventDefault();
 			$('.slider-inner').each(function(key, value) {
 				if ($(value).attr('aria-hidden') == 'false') {
 					$('#' + $(value).attr('id')).slick('slickNext');
 				}
 			});
-		});		
+		});
 	}
+
+	startSlider('.without-tabs');
+
+    $('.without-tabs').slick({
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        arrows: false
+    });
 
 });
