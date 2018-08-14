@@ -14,20 +14,15 @@ $columnCount = $instance['number_of_columns'];
 ?>
 
 <div id="<?php echo $random_id; ?>" class="gf-product-slider">
-    <div class="row gf-product-slider__header">
+    <div class="row gf-product-slider__header gf-product-slider__header--without-tabs">
         <h3 class="gf-product-slider__header__title"><a href="<?= $category_link ?>"><?= $slider_title ?></a></h3>
 
-        <div class="gf-product-slider__header__controls">
-            <a class="product-slider__control-prev gf-product-slider__header-control" href="#" role="button">
-                Prev
-                <span class="product-slider__control-prev-icon gf-product-slider__header-control"
-                      aria-hidden="true"></span>
-                <span class="sr-only"><?= _e('Previus', 'gf_widgets_domain') ?></span>
+        <div class="gf-product-slider__header__controls gf-product-slider__header__controls--without-tabs">
+          <a class="product-slider__control-prev gf-product-slider__header-control" href="#" role="button">
+              <i class="fas fa-angle-left product-slider__control-prev-icon"></i>
             </a>
             <a class="product-slider__control-next gf-product-slider__header-control" href="#" role="button">
-                Next
-                <span class="product-slider__control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only"><?= _e('Next', 'gf_widgets_domain') ?></span>
+              <i class="fas fa-angle-right product-slider__control-next-icon"></i>
             </a>
         </div>
     </div>
