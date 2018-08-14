@@ -8,17 +8,17 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <a href="<?= $instance['image_1_link'] ?>">
+            <a href="<?= $instance['image_1_link'] ?>" target="_blank">
                 <img class="d-block w-100" src="<?= $instance['image_1_value'] ?>" alt="First slide">
             </a>
         </div>
         <div class="carousel-item">
-            <a href="<?= $instance['image_2_link'] ?>">
+            <a href="<?= $instance['image_2_link'] ?>" target="_blank">
                 <img class="d-block w-100" src="<?= $instance['image_2_value'] ?>" alt="First slide">
             </a>
         </div>
         <div class="carousel-item">
-            <a href="<?= $instance['image_3_link'] ?>">
+            <a href="<?= $instance['image_3_link'] ?>" target="_blank">
                 <img class="d-block w-100" src="<?= $instance['image_3_value'] ?>" alt="First slide">
             </a>
         </div>

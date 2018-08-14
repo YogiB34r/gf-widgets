@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
         custom_uploader.on('select', function() {
             var attachment = custom_uploader.state().get('selection').first().toJSON();
             input.val(attachment.url);
-            submitButton.prop('disabled', false);
+            submitButton.click();
         });
 
         //If the uploader object has already been created, reopen the dialog
@@ -31,14 +31,15 @@ jQuery(document).ready(function($) {
 
 //Gf- image slider
     $('#gf-homepage-row-1').on('click', '.gf-upload-image-1', function(e) {
-        clickHandler(e, $('.image_1_value'), $('#widget-41_gf_image_slider_widget-2 input[name="savewidget"]'));
+        clickHandler(e, $('.image_1_value'), $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]'));
     });
     $('#gf-homepage-row-1').on('click', '.gf-upload-image-2', function(e) {
-        clickHandler(e, $('.image_2_value'), $('#widget-41_gf_image_slider_widget-2 input[name="savewidget"]'));
+        clickHandler(e, $('.image_2_value'), $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]'));
     });
     $('#gf-homepage-row-1').on('click', '.gf-upload-image-3', function(e) {
-        clickHandler(e, $('.image_3_value'), $('#widget-41_gf_image_slider_widget-2 input[name="savewidget"]'));
+        clickHandler(e, $('.image_3_value'), $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]'));
     });
+
 
 
 //GF- custom logo
@@ -49,7 +50,6 @@ jQuery(document).ready(function($) {
 //GF- product slider
     $('#gf-homepage-row-2').on('change', '.gf-category-select', function(){
         $('#widget-gf_product_slider_widget-12-savewidget').click();
-        console.log('save');
     });
 
 /* show lightbox when clicking a thumbnail */

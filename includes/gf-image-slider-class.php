@@ -59,7 +59,9 @@ class gf_image_slider_widget extends WP_Widget
                     id="upload-image-1"
                     name="<?php echo esc_attr($this->get_field_name('image_1')); ?>"
                     type="button"
-                    value="Select Image">
+                    value="Izaberite sliku">
+
+
             <input class="image_1_value"
                    id=" <?php echo esc_attr($this->get_field_id('image_1_value')); ?>"
                    type="hidden"
@@ -73,6 +75,7 @@ class gf_image_slider_widget extends WP_Widget
                    type="text"
                    name="<?php echo esc_attr($this->get_field_name('image_1_link')); ?>"
                    value="<?php echo esc_attr($image_1_link); ?>">
+            <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_1_value); ?>"></div>
         </div>
         <div>
             <input
@@ -80,7 +83,8 @@ class gf_image_slider_widget extends WP_Widget
                     id="upload-image-2"
                     name="<?php echo esc_attr($this->get_field_name('image_2')); ?>"
                     type="button"
-                    value="Select Image">
+                    value="Izaberite sliku">
+
             <input class="image_2_value"
                    id=" <?php echo esc_attr($this->get_field_id('image_2_value')); ?>"
                    type="hidden"
@@ -94,6 +98,7 @@ class gf_image_slider_widget extends WP_Widget
                    type="text"
                    name="<?php echo esc_attr($this->get_field_name('image_2_link')); ?>"
                    value="<?php echo esc_attr($image_2_link); ?>">
+            <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_2_value); ?>"></div>
         </div>
         <div>
             <input
@@ -101,7 +106,7 @@ class gf_image_slider_widget extends WP_Widget
                     id="upload-image-3"
                     name="<?php echo esc_attr($this->get_field_name('image_3')); ?>"
                     type="button"
-                    value="Select Image">
+                    value="Izaberite sliku">
             <input class="image_3_value"
                    id=" <?php echo esc_attr($this->get_field_id('image_3_value')); ?>"
                    type="hidden"
@@ -115,6 +120,7 @@ class gf_image_slider_widget extends WP_Widget
                    type="text"
                    name="<?php echo esc_attr($this->get_field_name('image_3_link')); ?>"
                    value="<?php echo esc_attr($image_3_link); ?>">
+            <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_3_value); ?>"></div>
         </div>
 
         <?php
