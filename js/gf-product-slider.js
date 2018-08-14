@@ -12,9 +12,8 @@ jQuery(document).ready(function($) {
 		});
 		startSlider('#tabs-0');
 		hookSliderEvents();
-  }
-
-	startSlider('.without-tabs');
+		startSlider('.without-tabs');
+  }	
 
   function startSlider(selector) {
     $(selector).slick({
