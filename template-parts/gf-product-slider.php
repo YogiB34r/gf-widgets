@@ -45,11 +45,11 @@ $columnCount = $instance['number_of_columns'];
         </div>
         <div class="gf-product-slider__header__controls">
           <a class="product-slider__control-prev gf-product-slider__header-control" href="#" role="button">
-            <i class="fas fa-angle-left product-slider__control-prev-icon"></i>
-          </a>
-          <a class="product-slider__control-next gf-product-slider__header-control" href="#" role="button">
-            <i class="fas fa-angle-right product-slider__control-next-icon"></i>
-          </a>
+              <i class="fas fa-angle-left product-slider__control-prev-icon"></i>
+            </a>
+            <a class="product-slider__control-next gf-product-slider__header-control" href="#" role="button">
+              <i class="fas fa-angle-right product-slider__control-next-icon"></i>
+            </a>
         </div>
       </div>
 

@@ -1,18 +1,20 @@
 jQuery(document).ready(function($) {
   //don't start on wrong pages
   if (typeof gfSliderColumnCount !== "undefined") {
-    startSlider('#tabs-0');
-    hookSliderEvents();
 
-    //@Important activate slider after tab is displayed in order to have access to proper width
-    $("#tabs").tabs({
-      activate: function(event, ui) {
-        if (!$(ui.newPanel.selector).hasClass('slick-initialized')) {
-          startSlider(ui.newPanel.selector);
-        }
-      }
-    });
+		//@Important activate slider after tab is displayed in order to have access to proper width
+		$("#tabs").tabs({
+			activate: function(event, ui) {
+				if (!$(ui.newPanel.selector).hasClass('slick-initialized')) {
+					startSlider(ui.newPanel.selector);
+				}
+			}
+		});
+		startSlider('#tabs-0');
+		hookSliderEvents();
   }
+
+	startSlider('.without-tabs');
 
   function startSlider(selector) {
     $(selector).slick({
@@ -20,6 +22,7 @@ jQuery(document).ready(function($) {
       slidesToShow: gfSliderColumnCount,
       slidesToScroll: gfSliderColumnCount,
       arrows: false,
+	    dots: false,
       responsive: [{
           breakpoint: 1024,
           settings: {
@@ -52,7 +55,7 @@ jQuery(document).ready(function($) {
       e.preventDefault();
       $('.slider-inner').each(function(key, value) {
         if ($(value).attr('aria-hidden') == 'false') {
-          $('#' + $(value).attr('id')).slick('slickPrev');
+          $(this).slick('slickPrev');
         }
       });
     });
@@ -61,7 +64,7 @@ jQuery(document).ready(function($) {
       e.preventDefault();
       $('.slider-inner').each(function(key, value) {
         if ($(value).attr('aria-hidden') == 'false') {
-          $('#' + $(value).attr('id')).slick('slickNext');
+          $(this).slick('slickNext');
         }
       });
     });
