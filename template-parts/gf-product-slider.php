@@ -25,31 +25,31 @@ $columnCount = $instance['number_of_columns'];
           <div class="gf-product-slider__tabs">
           <ul>
             <li>
-                <a href="#tabs-0">Sve</a>
+                <a href="#tabs-0">Sve</a>|
             </li>
             <?php if (isset($instance['tab_1']) and !empty($instance['tab_1'])): ?>
             <li>
-                <a href="#tabs-1"><?= get_term_by('slug', $instance['tab_1'], 'product_cat')->name ?></a>
+                <a href="#tabs-1"><?= get_term_by('slug', $instance['tab_1'], 'product_cat')->name ?></a>|
             </li>
             <?php endif; ?>
             <?php if (isset($instance['tab_2']) and !empty($instance['tab_2'])): ?>
             <li>
-                <a href="#tabs-2"><?= get_term_by('slug', $instance['tab_2'], 'product_cat')->name ?></a>
+                <a href="#tabs-2"><?= get_term_by('slug', $instance['tab_2'], 'product_cat')->name ?></a>|
             </li>
             <?php endif; ?>
             <?php if (isset($instance['tab_3']) and !empty($instance['tab_3'])): ?>
             <li>
-                <a href="#tabs-3"><?= get_term_by('slug', $instance['tab_3'], 'product_cat')->name ?></a>
+                <a href="#tabs-3"><?= get_term_by('slug', $instance['tab_3'], 'product_cat')->name ?></a>|
             </li>
             <?php endif; ?>
             <?php if (isset($instance['tab_4']) and !empty($instance['tab_4'])): ?>
             <li>
-                <a href="#tabs-4"><?= get_term_by('slug', $instance['tab_4'], 'product_cat')->name ?></a>
+                <a href="#tabs-4"><?= get_term_by('slug', $instance['tab_4'], 'product_cat')->name ?></a>|
             </li>
             <?php endif; ?>
             <?php if (isset($instance['tab_5']) and !empty($instance['tab_5'])): ?>
             <li>
-                <a href="#tabs-5"><?= get_term_by('slug', $instance['tab_5'], 'product_cat')->name ?></a>
+                <a href="#tabs-5"><?= get_term_by('slug', $instance['tab_5'], 'product_cat')->name ?></a>|
             </li>
             <?php endif; ?>
           </ul>
