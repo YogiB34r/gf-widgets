@@ -42,20 +42,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  padding-bottom: 0;
+  padding-bottom: 5px;
   border-bottom: solid 1px rgba(204, 204, 204, 0.7);
   margin: 0 !important;
 }
 
-.gf-product-slider__header--without-tabs {
-  padding: 0;
+.gf-product-slider__header a {
+  color: #454545;
 }
 
-.gf-product-slider__header__title {
-  color: #1d1d1d;
+.gf-product-slider__header--without-tabs {
+  padding-bottom: 10px;
+}
+
+.gf-product-slider__header__title a {
+  color: #454545;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
 .gf-product-slider__tabs {
@@ -75,15 +78,20 @@
 }
 
 .gf-product-slider__header a.gf-product-slider__header-control {
-  padding: 0 8px;
+  padding: 4px 14px;
   font-size: 25px;
-  border: solid 1px #ccc;
+  border: solid 2px #c2c2c2;
   border-radius: 4px;
+  color: #c2c2c2;
+}
+
+.gf-product-slider__header a.gf-product-slider__header-control:hover {
+  color: #f45411;
 }
 
 a.gf-product-slider__header-control.product-slider__control-prev {
-  padding-right: 2px;
-  padding-left: 6px;
+  padding-right: 10px;
+  padding-left: 14px;
   margin-right: 10px;
 }
 
@@ -158,14 +166,34 @@ html .ui-button.ui-state-disabled:active,
   border: none;
 }
 
-.ui-state-default a, .ui-state-default a:link {
+.ui-widget-header .ui-state-default {
   color: #c2c2c2;
+  display: flex;
+  align-items: center;
 }
 
-.ui-state-active a,
-.ui-state-active a:link,
-.ui-state-active a:visited {
+.ui-widget-header .ui-state-default a,
+.ui-widget-header .ui-state-default a:link,
+.ui-widget-header .ui-state-default a:visited {
+  color: #c2c2c2;
+  font-size: 1.3rem;
+}
+
+.ui-widget-header .ui-state-default a:hover,
+.ui-widget-header .ui-state-default a:hover,
+.ui-widget-header .ui-state-default a:hover {
+  color: #aaa;
+}
+
+.ui-widget-header .ui-state-active a,
+.ui-widget-header .ui-state-active a:link,
+.ui-widget-header .ui-state-active a:visited {
   color: #454545;
+}
+
+.ui-widget-header .ui-state-default:last-child,
+.ui-widget-header .ui-state-active:last-child  {
+  color: transparent;
 }
 
 @media only screen and (max-width: 767px) {
