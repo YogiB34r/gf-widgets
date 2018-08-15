@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
 		startSlider('#tabs-0');
 		hookSliderEvents();
 		startSlider('.without-tabs');
-  }	
+  }
 
   function startSlider(selector) {
     $(selector).slick({
@@ -27,8 +27,7 @@ jQuery(document).ready(function($) {
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-            infinite: true,
-            dots: true
+            infinite: true
           }
         },
         {
