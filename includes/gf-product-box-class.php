@@ -1,6 +1,6 @@
 <?php
 
-class gf_product_slider_without_tabs_widget extends WP_Widget
+class gf_product_box_widget extends WP_Widget
 {
 
     /**
@@ -9,9 +9,9 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
     function __construct()
     {
         parent::__construct(
-            'gf_product_slider_without_tabs_widget', // Base ID
-            esc_html__('GF Product Slider Widget (without tabs)', 'gf_widgets_domain'), // Name
-            array('description' => esc_html__('Product Slider Without Tabs', 'gf_widgets_domain'),) // Args
+            'gf_product_box_widget', // Base ID
+            esc_html__('GF Product Box Widget', 'gf_widgets_domain'), // Name
+            array('description' => esc_html__('Product Slider Box', 'gf_widgets_domain'),) // Args
         );
     }
 
@@ -33,7 +33,7 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
         global $post;
 
         if (isset($instance['category_select']) and !empty($instance['category_select'])) {
-            require(realpath(__DIR__ . '/../template-parts/gf-product-slider-without-tabs.php'));
+            require(realpath(__DIR__ . '/../template-parts/gf-product-box.php'));
         }
 
         if (isset($args['after_widget'])) {
@@ -56,6 +56,7 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
             $slider_id = get_term_by('slug', 'gf-slider', 'product_cat')->term_id;
             $slider_title = !empty($instance['slider_title']) ? $instance['slider_title'] : esc_html__('', 'gf_product_slider_without_tabs_widget_domain');
             $category_select = !empty($instance['category_select']) ? $instance['category_select'] : esc_html__('', 'gf_product_slider_without_tabs_widget_domain');
+            $columns = !empty($instance['number_of_columns']) ? $instance['number_of_columns'] : esc_html__('', 'gf_product_slider_without_tabs_widget_domain');
             $cat_args = array(
                 'parent' => $slider_id
             );
@@ -74,8 +75,21 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
                     $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
                     $product_count = $category_term->count;
                 }
+                if (isset($instance['number_of_columns']) and !empty($instance['number_of_columns'])) {
+                    if ($product_count < $instance['number_of_columns']) {
+                        if ($product_count >= 6) {
+                            $columns = 6;
+                        } else {
+                            $columns = $product_count;
+                        }
+                    } else {
+                        $columns = $instance['number_of_columns'];
+                    }
 
-                
+                } else {
+                    $columns = 4;
+                }
+
                 ?>
 
                 <div class="gf-product-slider-wrapper">
@@ -130,8 +144,7 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
         $instance = array();
         $instance['slider_title'] = (!empty($new_instance['slider_title'])) ? sanitize_text_field($new_instance['slider_title']) : '';
         $instance['category_select'] = (!empty($new_instance['category_select'])) ? sanitize_text_field($new_instance['category_select']) : '';
-        $instance['number_of_columns'] = (!empty($new_instance['number_of_columns'])) ? sanitize_text_field($new_instance['number_of_columns']) : '';
-      
+
         return $instance;
     }
 }
