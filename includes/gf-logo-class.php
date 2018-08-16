@@ -53,6 +53,7 @@ class gf_custom_logo_widget extends WP_Widget {
                    type="hidden"
                    name="<?php echo esc_attr($this->get_field_name('logo_image_value')); ?>"
                    value="<?php echo esc_attr($logo_image_value); ?>">
+            <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($logo_image_value); ?>"></div>
         </div>
         <?php
     }
