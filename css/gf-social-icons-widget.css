@@ -52,7 +52,7 @@ a.socialIcon:hover, .socialHoverClass {
 .social-circle li a {
     display:inline-block;
     position:relative;
-    margin:0 auto 0 auto;
+    margin: 0 auto;
     -moz-border-radius:50%;
     -webkit-border-radius:50%;
     border-radius:50%;
@@ -85,4 +85,26 @@ a.socialIcon:hover, .socialHoverClass {
     -o-transition: all 0.8s;
     -ms-transition: all 0.8s;
     transition: all 0.8s;
+}
+
+@media only screen and (max-width: 1200px) {
+  .widget_gf_social_icons_widget h2.widgettitle {
+    text-align: center;
+  }
+
+  .social-circle li a {
+    display: block;
+    margin: 0;
+    text-align: center;
+  }
+
+  .social-link {
+    width: 100% !important;
+  }
+
+  .icoFacebook,
+  .icoRss {
+    margin: 10px auto !important;
+  }
+
 }
