@@ -1,5 +1,4 @@
 <?php
-$random_id = rand();
 $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
 $category_link = get_term_link($category_term->term_id);
 $products = wc_get_products(array(
@@ -10,24 +9,19 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
 } else {
     $slider_title = $category_term->name;
 }
-
-
 ?>
-
-<div id="<?php echo $random_id; ?>" class="gf-product-slider">
-    <div class="row gf-product-slider__header gf-product-slider__header--without-tabs">
-        <h3 class="gf-product-slider__header__title"><a href="<?= $category_link ?>"><?= $slider_title ?></a></h3>
+<div class="gf-category-box">
+    <div class="row gf-category-box__header">
+        <h3 class="gf-category-box__header__title"><a href="<?= $category_link ?>"><?= $slider_title ?></a></h3>
     </div>
-
-    <div class="row">
+    <div class="row gf-category-box__body">
         <?php
         $args = array('post_type' => 'product', 'posts_per_page' => 6, 'product_cat' => $instance['category_select'], 'orderby' => 'name');
         $loop = new WP_Query($args);
         while ($loop->have_posts()) :
             $loop->the_post();
             global $product; ?>
-
-            <div class="col">
+            <div class="col-12 col-sm-6 col-md-3 col-xl-2 gf-category-box__item">
                 <a href="<?php echo get_permalink($loop->post->ID) ?>"
                    title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
                     <?php woocommerce_show_product_sale_flash($post, $product); ?>
@@ -37,8 +31,7 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
                 </a>
                 <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
             </div>
-
         <?php endwhile; ?>
         <?php wp_reset_query(); ?>
-    </div><!--    slider-inner-->
+    </div><!--gf-category-body-->
 </div>
