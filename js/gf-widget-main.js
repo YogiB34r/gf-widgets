@@ -40,6 +40,20 @@ jQuery(document).ready(function($) {
         clickHandler(e, $('.image_3_value'), $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]'));
     });
 
+//GF - image banners
+    $('#gf-homepage-row-1').on('click', '.gf-upload-banner-image-1', function(e) {
+        clickHandler(e, $('.image_banner_1_value'), $('#widget-gf_image_banners_widget-3-savewidget'));
+    });
+    $('#gf-homepage-row-1').on('click', '.gf-upload-banner-image-2', function(e) {
+        clickHandler(e, $('.image_banner_1_value'), $('#widget-gf_image_banners_widget-3-savewidget'));
+    });
+    $('#gf-homepage-row-1').on('click', '.gf-upload-banner-image-3', function(e) {
+        clickHandler(e, $('.image_banner_1_value'), $('#widget-gf_image_banners_widget-3-savewidget'));
+    });
+    $('#gf-homepage-row-1').on('click', '.gf-upload-banner-image-4', function(e) {
+        clickHandler(e, $('.image_banner_1_value'), $('#widget-gf_image_banners_widget-3-savewidget'));
+    });
+
 
 
 //GF- custom logo
