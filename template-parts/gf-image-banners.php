@@ -13,22 +13,22 @@ $category_link_4 = get_term_link($category_term_4->term_id);
 ?>
 
 <div class="row gf-image-banners">
-    <div class="col">
+    <div class="col-6 gf-image-banners__item">
         <a href="<?=$category_link_1?>" target="_blank">
             <img src="<?= $instance['image_banner_1_value'] ?>" >
         </a>
     </div>
-    <div class="col">
+    <div class="col-6 gf-image-banners__item">
         <a href="<?=$category_link_2?>" target="_blank">
             <img src="<?= $instance['image_banner_2_value'] ?>">
         </a>
     </div>
-    <div class="col">
+    <div class="col-6 gf-image-banners__item">
         <a href="<?=$category_link_3?>" target="_blank">
             <img src="<?= $instance['image_banner_3_value'] ?>">
         </a>
     </div>
-    <div class="col">
+    <div class="col-6 gf-image-banners__item">
         <a href="<?=$category_link_4?>" target="_blank">
             <img src="<?= $instance['image_banner_4_value'] ?>">
         </a>
