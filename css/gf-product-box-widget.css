@@ -49,16 +49,10 @@
 }
 
 @media only screen and (max-width: 767px) {
-	.gf-category-box__item:nth-child(n+3) {
-		display: none;
-	}
   .gf-category-box__item  h5 {
-    font-size: 1em;
+    font-size: 0.8em;
   }
 }
 
 @media only screen and (max-width: 575px) {
-	.gf-category-box__item:nth-child(n+2) {
-		display: none;
-	}
 }
