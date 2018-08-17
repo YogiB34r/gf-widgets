@@ -31,6 +31,7 @@ require_once(plugin_dir_path(__FILE__) . '/includes/gf-contact-phone-class.php')
 require_once(plugin_dir_path(__FILE__) . '/includes/gf-product-slider-class.php');
 require_once(plugin_dir_path(__FILE__) . '/includes/gf-product-slider-without-tabs-class.php');
 require_once(plugin_dir_path(__FILE__) . '/includes/gf-product-box-class.php');
+require_once(plugin_dir_path(__FILE__) . '/includes/gf-image-banners-class.php');
 
 
 function gf_register_widgets(){
@@ -42,6 +43,8 @@ function gf_register_widgets(){
     register_widget('gf_product_slider_widget');
     register_widget('gf_product_slider_without_tabs_widget');
     register_widget('gf_product_box_widget');
+    register_widget('gf_image_banners_widget');
+
 
 }
 add_action('widgets_init', 'gf_register_widgets');
