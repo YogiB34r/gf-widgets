@@ -42,16 +42,16 @@ jQuery(document).ready(function($) {
 
 //GF - image banners
     $('#gf-homepage-row-1').on('click', '.gf-upload-banner-image-1', function(e) {
-        clickHandler(e, $('.image_banner_1_value'), $('#widget-gf_image_banners_widget-4-savewidget'));
+        clickHandler(e, $('.image_banner_1_value'), $('#widget-gf_image_banners_widget-2-savewidget'));
     });
     $('#gf-homepage-row-1').on('click', '.gf-upload-banner-image-2', function(e) {
-        clickHandler(e, $('.image_banner_2_value'), $('#widget-gf_image_banners_widget-4-savewidget'));
+        clickHandler(e, $('.image_banner_2_value'), $('#widget-gf_image_banners_widget-2-savewidget'));
     });
     $('#gf-homepage-row-1').on('click', '.gf-upload-banner-image-3', function(e) {
-        clickHandler(e, $('.image_banner_3_value'), $('#widget-gf_image_banners_widget-4-savewidget'));
+        clickHandler(e, $('.image_banner_3_value'), $('#widget-gf_image_banners_widget-2-savewidget'));
     });
     $('#gf-homepage-row-1').on('click', '.gf-upload-banner-image-4', function(e) {
-        clickHandler(e, $('.image_banner_4_value'), $('#widget-gf_image_banners_widget-4-savewidget'));
+        clickHandler(e, $('.image_banner_4_value'), $('#widget-gf_image_banners_widget-2-savewidget'));
     });
 
 
