@@ -27,7 +27,14 @@ class gf_image_banners_widget extends WP_Widget
     {
         echo $args['before_widget'];
 
-        require(realpath(__DIR__ . '/../template-parts/gf-image-banners.php'));
+        if(
+                isset($instance['category_select_1']) and !empty($instance['category_select_1']) and
+                isset($instance['category_select_2']) and !empty($instance['category_select_2']) and
+                isset($instance['category_select_3']) and !empty($instance['category_select_3']) and
+                isset($instance['category_select_4']) and !empty($instance['category_select_4']))
+            {
+                require(realpath(__DIR__ . '/../template-parts/gf-image-banners.php'));
+        }
 
         echo $args['after_widget'];
     }
