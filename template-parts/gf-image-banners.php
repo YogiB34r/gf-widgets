@@ -14,7 +14,7 @@ $category_link_4 = get_term_link($category_term_4->term_id);
 
 <div class="row gf-image-banners">
     <div class="col-6 gf-image-banners__item">
-        <a href="<?=$category_link_1?>" target="_blank">
+        <a href="<?=$category_link_1?>" target="_self">
             <img src="<?= $instance['image_banner_1_value'] ?>" >
         </a>
     </div>
