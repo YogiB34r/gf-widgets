@@ -21,7 +21,7 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
         while ($loop->have_posts()) :
             $loop->the_post();
             global $product; ?>
-            <div class="col-6 col-md-3 col-xl-2 gf-category-box__item">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 gf-category-box__item">
                 <a href="<?php echo get_permalink($loop->post->ID) ?>"
                    title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
                     <?php woocommerce_show_product_sale_flash($post, $product); ?>
