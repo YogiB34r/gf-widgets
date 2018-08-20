@@ -187,7 +187,7 @@ class gf_image_banners_widget extends WP_Widget
                        id=" <?php echo esc_attr($this->get_field_id('image_banner_4_value')); ?>"
                        type="hidden"
                        name="<?php echo esc_attr($this->get_field_name('image_banner_4_value')); ?>"
-                       value="<?php echo esc_attr($image_3_value); ?>">
+                       value="<?php echo esc_attr($image_4_value); ?>">
                 <select
                         class="gf-category-select widefat"
                         id="<?php echo esc_attr($this->get_field_id('category_select_4')); ?>"
@@ -202,7 +202,7 @@ class gf_image_banners_widget extends WP_Widget
                         </option>
                     <?php endforeach; ?>
                 </select>
-                <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_3_value); ?>"></div>
+                <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_4_value); ?>"></div>
             </div>
         </div>
 
