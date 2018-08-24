@@ -1,5 +1,5 @@
 <?php
-
+//@todo Napraviti da moze manje od tri slike i da moze da se removuje slika
 class gf_image_banners_widget extends WP_Widget
 {
 
