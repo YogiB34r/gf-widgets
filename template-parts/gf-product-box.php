@@ -1,6 +1,7 @@
 <?php
 $stickerPlugin = new Woo_Stickers_By_Webline_Public('woo-stickers-by-webline','1.1.1');
 $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
+if ($category_term){
 $category_link = get_term_link($category_term->term_id);
 $products = wc_get_products(array(
     'category' => $instance['category_select'],
@@ -36,6 +37,6 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
                 <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
             </div>
         <?php endwhile; ?>
-        <?php wp_reset_query(); ?>
+        <?php wp_reset_query();} ?>
     </div><!--gf-category-body-->
 </div>
