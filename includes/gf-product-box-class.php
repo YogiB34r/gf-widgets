@@ -122,10 +122,10 @@ class gf_product_box_widget extends WP_Widget
 
                 <?php
             } else {
-                echo 'Nije pronađena nijedna kategorija u Gf slideru!';
+                echo 'Nije pronađena nijedna kategorija u Specijalnim promocijama!';
             }
         }else{
-            echo 'Morate napraviti kategoriju pod imenom "GF Slider"';
+            echo 'Morate napraviti kategoriju pod imenom "Specijalne promocije"';
         }
     }
 
