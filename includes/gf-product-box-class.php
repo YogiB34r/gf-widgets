@@ -52,8 +52,8 @@ class gf_product_box_widget extends WP_Widget
      */
     public function form($instance)
     {
-        if (!empty(get_term_by('slug', 'gf-slider', 'product_cat')->term_id)) {
-            $slider_id = get_term_by('slug', 'gf-slider', 'product_cat')->term_id;
+        if (!empty(get_term_by('slug', 'specijalne-promocije', 'product_cat')->term_id)) {
+            $slider_id = get_term_by('slug', 'specijalne-promocije', 'product_cat')->term_id;
             $slider_title = !empty($instance['slider_title']) ? $instance['slider_title'] : esc_html__('', 'gf_product_slider_without_tabs_widget_domain');
             $category_select = !empty($instance['category_select']) ? $instance['category_select'] : esc_html__('', 'gf_product_slider_without_tabs_widget_domain');
             $columns = !empty($instance['number_of_columns']) ? $instance['number_of_columns'] : esc_html__('', 'gf_product_slider_without_tabs_widget_domain');
