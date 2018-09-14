@@ -86,6 +86,11 @@ a.socialIcon:hover, .socialHoverClass {
     -ms-transition: all 0.8s;
     transition: all 0.8s;
 }
+.widget_gf_social_icons_widget {
+    border-top: solid 30px #F45411;
+    text-align: left;
+    border-bottom: solid 30px #F45411;
+}
 
 @media only screen and (max-width: 1200px) {
   .widget_gf_social_icons_widget h2.widgettitle {
@@ -106,5 +111,4 @@ a.socialIcon:hover, .socialHoverClass {
   .icoRss {
     margin: 10px auto !important;
   }
-
 }
