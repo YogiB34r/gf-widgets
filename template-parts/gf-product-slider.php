@@ -11,9 +11,9 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
     $slider_title = $category_term->name;
 }
 $columnCount = (int) $instance['number_of_columns'];
-//if ($columnCount === 0) {
-//    $columnCount = 1;
-//}
+if ($columnCount === 0) {
+    $columnCount = 1;
+}
 ?>
 
   <div id="<?php echo $random_id; ?>" class="gf-product-slider">
