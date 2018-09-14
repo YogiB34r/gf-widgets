@@ -39,10 +39,7 @@ class gf_product_box_widget extends WP_Widget
         if (isset($args['after_widget'])) {
             echo $args['after_widget'];
         }
-
-
     }
-
     /**
      * Back-end widget form.
      *
