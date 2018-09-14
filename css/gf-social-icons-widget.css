@@ -91,7 +91,13 @@ a.socialIcon:hover, .socialHoverClass {
     text-align: left;
     border-bottom: solid 30px #F45411;
 }
-
+.widget_gf_social_icons_widget ul li {
+    display: block;
+    text-align: left;
+}
+.widget_gf_social_icons_widget h2.widgettitle {
+    margin: 20px 0;
+}
 @media only screen and (max-width: 1200px) {
   .widget_gf_social_icons_widget h2.widgettitle {
     text-align: center;
