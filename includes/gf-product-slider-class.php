@@ -141,7 +141,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_1')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_1')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
+                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_1'])) {
                                     if ($slider_cat_child->slug == $instance['tab_1']) {
@@ -159,7 +159,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_2')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_2')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
+                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_2'])) {
                                     if ($slider_cat_child->slug == $instance['tab_2']) {
@@ -177,7 +177,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_3')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_3')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
+                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_3'])) {
                                     if ($slider_cat_child->slug == $instance['tab_3']) {
@@ -195,7 +195,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_4')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_4')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
+                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_4'])) {
                                     if ($slider_cat_child->slug == $instance['tab_4']) {
@@ -213,7 +213,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_5')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_5')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
+                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_5'])) {
                                     if ($slider_cat_child->slug == $instance['tab_5']) {
