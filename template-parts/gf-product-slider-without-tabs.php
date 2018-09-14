@@ -10,7 +10,7 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
 } else {
     $slider_title = $category_term->name;
 }
-$columnCount = (int) $instance['number_of_columns']
+$columnCount = (int) $instance['number_of_columns'];
 if ($columnCount === 0) {
     $columnCount = 1;
 }
