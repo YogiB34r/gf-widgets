@@ -137,7 +137,9 @@ a.gf-product-slider__header-control.product-slider__control-prev {
 .widget_gf_product_slider_without_tabs_widget {
   max-width: 100%;
 }
-
+.slick-slide{
+  position: relative;
+}
 .slick-slide img {
   width: 100%;
   height: auto;
@@ -220,7 +222,10 @@ html .ui-button.ui-state-disabled:active,
     width: auto;
   }
 }
-
+.gf-product-slider .gf-sticker--center{
+  top: 25%;
+  width: 100%;
+}
 @media only screen and (max-width: 767px) {
 
   .gf-product-slider {
