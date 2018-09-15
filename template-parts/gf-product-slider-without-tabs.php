@@ -32,7 +32,13 @@ if ($columnCount === 0) {
 
     <div class="slider-inner without-tabs">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name');
+        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+            'meta_query' => array(
+                array(
+                    'key' => '_stock_status',
+                    'value' => 'instock'
+                ),
+            ));
         $loop = new WP_Query($args);
         while ($loop->have_posts()) :
             $loop->the_post();

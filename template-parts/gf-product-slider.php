@@ -70,8 +70,13 @@ if ($columnCount === 0) {
 
       <div id="tabs-0" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name');
-            $loop = new WP_Query($args);
+        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+            'meta_query' => array(
+                array(
+                    'key' => '_stock_status',
+                    'value' => 'instock'
+                ),
+            ));            $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
@@ -90,8 +95,13 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_1']) and !empty($instance['tab_1'])): ?>
       <div id="tabs-1" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_1'], 'orderby' => 'name');
-            $loop = new WP_Query($args);
+        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+            'meta_query' => array(
+                array(
+                    'key' => '_stock_status',
+                    'value' => 'instock'
+                ),
+            ));            $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
@@ -112,8 +122,13 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_2']) and !empty($instance['tab_2'])): ?>
       <div id="tabs-2" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_2'], 'orderby' => 'name');
-            $loop = new WP_Query($args);
+        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+            'meta_query' => array(
+                array(
+                    'key' => '_stock_status',
+                    'value' => 'instock'
+                ),
+            ));            $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
@@ -134,8 +149,13 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_3']) and !empty($instance['tab_3'])): ?>
       <div id="tabs-3" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_3'], 'orderby' => 'name');
-            $loop = new WP_Query($args);
+        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+            'meta_query' => array(
+                array(
+                    'key' => '_stock_status',
+                    'value' => 'instock'
+                ),
+            ));            $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
@@ -156,8 +176,13 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_4']) and !empty($instance['tab_4'])): ?>
       <div id="tabs-4" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_4'], 'orderby' => 'name');
-            $loop = new WP_Query($args);
+        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+            'meta_query' => array(
+                array(
+                    'key' => '_stock_status',
+                    'value' => 'instock'
+                ),
+            ));            $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
@@ -178,8 +203,13 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_5']) and !empty($instance['tab_5'])): ?>
       <div id="tabs-5" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_5'], 'orderby' => 'name');
-            $loop = new WP_Query($args);
+        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+            'meta_query' => array(
+                array(
+                    'key' => '_stock_status',
+                    'value' => 'instock'
+                ),
+            ));            $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
