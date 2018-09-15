@@ -30,10 +30,16 @@ class gf_product_slider_widget extends WP_Widget
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
 
-        global $post;
-
         if (isset($instance['category_select']) and !empty($instance['category_select'])) {
-            require(realpath(__DIR__ . '/../template-parts/gf-product-slider.php'));
+            $key = 'product-slider-tabs#' . $instance['category_select'];
+            $html = get_transient($key);
+            if ($html === false) {
+                ob_start();
+                require(realpath(__DIR__ . '/../template-parts/gf-product-slider.php'));
+                $html = ob_get_clean();
+                set_transient($key, $html, 60 * 30);
+            }
+            echo $html;
         }
 
         if (isset($args['after_widget'])) {

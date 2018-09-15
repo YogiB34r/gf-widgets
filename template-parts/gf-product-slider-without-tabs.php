@@ -2,9 +2,6 @@
 $random_id = rand();
 $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
 $category_link = get_term_link($category_term->term_id);
-$products = wc_get_products(array(
-    'category' => $instance['category_select'],
-));
 if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
     $slider_title = $instance['slider_title'];
 } else {
@@ -32,7 +29,7 @@ if ($columnCount === 0) {
 
     <div class="slider-inner without-tabs">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array('post_type' => 'product', 'posts_per_page' => 10, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
             'meta_query' => array(
                 array(
                     'key' => '_stock_status',
@@ -53,7 +50,7 @@ if ($columnCount === 0) {
                     <h5><?php the_title(); ?></h5>
                     <span class="price"><?php echo $product->get_price_html(); ?></span>
                 </a>
-                <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
+                <?php //woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
             </div>
         <?php endwhile; ?>
         <?php wp_reset_query(); ?>

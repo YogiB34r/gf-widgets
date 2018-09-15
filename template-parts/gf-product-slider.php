@@ -2,9 +2,6 @@
 $random_id = rand();
 $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
 $category_link = get_term_link($category_term->term_id);
-$products = wc_get_products(array(
-    'category' => $instance['category_select'],
-));
 if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
     $slider_title = $instance['slider_title'];
 } else {
@@ -14,6 +11,7 @@ $columnCount = (int) $instance['number_of_columns'];
 if ($columnCount === 0) {
     $columnCount = 5;
 }
+$itemLimit = 10;
 ?>
 
   <div id="<?php echo $random_id; ?>" class="gf-product-slider">
@@ -70,7 +68,7 @@ if ($columnCount === 0) {
 
       <div id="tabs-0" class="slider-inner">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
             'meta_query' => array(
                 array(
                     'key' => '_stock_status',
@@ -87,7 +85,7 @@ if ($columnCount === 0) {
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
             </a>
-            <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
+            <?php //woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
           </div>
           <?php endwhile; ?>
           <?php wp_reset_query(); ?>
@@ -95,7 +93,7 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_1']) and !empty($instance['tab_1'])): ?>
       <div id="tabs-1" class="slider-inner">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_1'], 'orderby' => 'name',
             'meta_query' => array(
                 array(
                     'key' => '_stock_status',
@@ -112,7 +110,7 @@ if ($columnCount === 0) {
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
             </a>
-            <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
+            <?php //woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
           </div>
           <?php endwhile; ?>
           <?php wp_reset_query(); ?>
@@ -122,7 +120,7 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_2']) and !empty($instance['tab_2'])): ?>
       <div id="tabs-2" class="slider-inner">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_2'], 'orderby' => 'name',
             'meta_query' => array(
                 array(
                     'key' => '_stock_status',
@@ -139,7 +137,7 @@ if ($columnCount === 0) {
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
             </a>
-            <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
+            <?php //woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
           </div>
           <?php endwhile; ?>
           <?php wp_reset_query(); ?>
@@ -149,7 +147,7 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_3']) and !empty($instance['tab_3'])): ?>
       <div id="tabs-3" class="slider-inner">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_3'], 'orderby' => 'name',
             'meta_query' => array(
                 array(
                     'key' => '_stock_status',
@@ -166,7 +164,7 @@ if ($columnCount === 0) {
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
             </a>
-            <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
+            <?php //woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
           </div>
           <?php endwhile; ?>
           <?php wp_reset_query(); ?>
@@ -176,7 +174,7 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_4']) and !empty($instance['tab_4'])): ?>
       <div id="tabs-4" class="slider-inner">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_4'], 'orderby' => 'name',
             'meta_query' => array(
                 array(
                     'key' => '_stock_status',
@@ -193,7 +191,7 @@ if ($columnCount === 0) {
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
             </a>
-            <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
+            <?php //woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
           </div>
           <?php endwhile; ?>
           <?php wp_reset_query(); ?>
@@ -203,7 +201,7 @@ if ($columnCount === 0) {
       <?php if (isset($instance['tab_5']) and !empty($instance['tab_5'])): ?>
       <div id="tabs-5" class="slider-inner">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_5'], 'orderby' => 'name',
             'meta_query' => array(
                 array(
                     'key' => '_stock_status',
@@ -220,7 +218,7 @@ if ($columnCount === 0) {
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
             </a>
-            <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
+            <?php //woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
           </div>
           <?php endwhile; ?>
           <?php wp_reset_query(); ?>

@@ -2,9 +2,6 @@
 $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
 if ($category_term){
 $category_link = get_term_link($category_term->term_id);
-$products = wc_get_products(array(
-    'category' => $instance['category_select'],
-));
 if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
     $slider_title = $instance['slider_title'];
 } else {
@@ -17,7 +14,7 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
     </div>
     <div class="row gf-category-box__body">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'],
+        $args = array('post_type' => 'product', 'posts_per_page' => 10, 'product_cat' => $instance['category_select'],
             'orderby' => 'name',
             'meta_query' => array(
                 array(
@@ -28,7 +25,7 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
         $loop = new WP_Query($args);
         while ($loop->have_posts()) :
             $loop->the_post();
-            global $product; var_dump($product);?>
+            global $product; ?>
 
             <div class="col-6 col-md-4 col-lg-3 col-xl-2 gf-category-box__item">
                 <a href="<?php echo get_permalink($loop->post->ID) ?>"
@@ -40,7 +37,7 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
                     <h5><?php the_title(); ?></h5>
                     <span class="price"><?php echo $product->get_price_html(); ?></span>
                 </a>
-                <?php woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
+                <?php //woocommerce_template_loop_add_to_cart($loop->post, $product); ?>
             </div>
         <?php endwhile; ?>
         <?php wp_reset_query();
