@@ -13,6 +13,7 @@ class gf_product_slider_widget extends WP_Widget
             esc_html__('GF Product Slider Widget', 'gf_widgets_domain'), // Name
             array('description' => esc_html__('Product Slider', 'gf_widgets_domain'),) // Args
         );
+        $this->cache = new GF_Cache();
     }
 
     /**
@@ -32,15 +33,12 @@ class gf_product_slider_widget extends WP_Widget
 
         if (isset($instance['category_select']) and !empty($instance['category_select'])) {
             $key = 'product-slider-tabs#' . serialize($instance);
-            $cache = new GF_Cache();
-//            $html = get_transient($key);
-            $html = $cache->redis->get($key);
+            $html = $this->cache->redis->get($key);
             if ($html === false) {
                 ob_start();
                 require(realpath(__DIR__ . '/../template-parts/gf-product-slider.php'));
                 $html = ob_get_clean();
-//                set_transient($key, $html, 60 * 30);
-                $cache->redis->set($key, $html, 60 * 55);
+                $this->cache->redis->set($key, $html);
             }
             echo $html;
         }
@@ -271,7 +269,6 @@ class gf_product_slider_widget extends WP_Widget
         }
 
         $this->generateBoxHtml($instance);
-
 
         return $instance;
     }
