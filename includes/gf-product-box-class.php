@@ -2,6 +2,7 @@
 
 class gf_product_box_widget extends WP_Widget
 {
+    private $cache;
 
     /**
      * Register widget with WordPress.
@@ -13,6 +14,8 @@ class gf_product_box_widget extends WP_Widget
             esc_html__('GF Product Box Widget', 'gf_widgets_domain'), // Name
             array('description' => esc_html__('Product Slider Box', 'gf_widgets_domain'),) // Args
         );
+
+        $this->cache = new GF_Cache();
     }
 
     /**
@@ -31,27 +34,26 @@ class gf_product_box_widget extends WP_Widget
         }
 
         if (isset($instance['category_select']) and !empty($instance['category_select'])) {
-            $key = 'product-box#' . $instance['category_select'];
-            $cache = new GF_Cache();
-//            $html = get_transient($key);
-            $html = $cache->redis->get($key);
-            if ($html === false) {
-                ob_start();
-                require(realpath(__DIR__ . '/../template-parts/gf-product-box.php'));
-                $html = ob_get_clean();
-//                set_transient($key, $html, 60 * 30);
-                $cache->redis->set($key, $html, 60 * 50);
-            }
-            $keys[] = $cache->redis->keys('product-box');
-
-            echo $html;
+            echo $this->generateBoxHtml($instance);
         }
 
         if (isset($args['after_widget'])) {
             echo $args['after_widget'];
         }
+    }
 
+    private function generateBoxHtml($instance)
+    {
+        $key = 'product-box#' . $instance['category_select'];
+        $html = $this->cache->redis->get($key);
+        if ($html === false) {
+            ob_start();
+            require(realpath(__DIR__ . '/../template-parts/gf-product-box.php'));
+            $html = ob_get_clean();
+            $this->cache->redis->set($key, $html);
+        }
 
+        return $html;
     }
 
     /**
@@ -156,12 +158,10 @@ class gf_product_box_widget extends WP_Widget
         $instance['slider_title'] = (!empty($new_instance['slider_title'])) ? sanitize_text_field($new_instance['slider_title']) : '';
         $instance['category_select'] = (!empty($new_instance['category_select'])) ? sanitize_text_field($new_instance['category_select']) : '';
 
-        $key = 'product-box#' . serialize($old_instance);
+        $key = 'product-box#' . $old_instance['category_select'];
         $cache = new GF_Cache();
-        $keys = $cache->redis->keys($key);
-        foreach ($keys as $key){
-            $cache->redis->del($key);
-        }
+        $cache->redis->del($key);
+        $this->generateBoxHtml($instance);
 
         return $instance;
     }
