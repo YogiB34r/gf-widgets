@@ -2,17 +2,17 @@
 $random_id = rand();
 $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
 $category_link = get_term_link($category_term->term_id);
-$products = wc_get_products(array(
-    'category' => $instance['category_select'],
-));
 if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
     $slider_title = $instance['slider_title'];
 } else {
     $slider_title = $category_term->name;
 }
-$columnCount = $instance['number_of_columns'];
+$columnCount = (int) $instance['number_of_columns'];
+if ($columnCount === 0) {
+    $columnCount = 5;
+}
+$itemLimit = 10;
 ?>
-
   <div id="<?php echo $random_id; ?>" class="gf-product-slider">
     <div id="tabs">
       <div class="row gf-product-slider__header">
@@ -67,14 +67,21 @@ $columnCount = $instance['number_of_columns'];
 
       <div id="tabs-0" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name');
+            $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['category_select'],
+                'orderby' => 'name',
+                'meta_query' => array(
+                    array(
+                        'key' => '_stock_status',
+                        'value' => 'instock'
+                   ),
+            ));
             $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
           <div class="slider-item">
             <a href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
-              <?php woocommerce_show_product_sale_flash($post, $product); ?>
+              <?php woocommerce_show_product_sale_flash('', $product); ?>
               <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog'); else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" width="300px" height="300px" />'; ?>
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
@@ -87,14 +94,21 @@ $columnCount = $instance['number_of_columns'];
       <?php if (isset($instance['tab_1']) and !empty($instance['tab_1'])): ?>
       <div id="tabs-1" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_1'], 'orderby' => 'name');
+            $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_1'],
+                'orderby' => 'name',
+                'meta_query' => array(
+                    array(
+                        'key' => '_stock_status',
+                        'value' => 'instock'
+                    ),
+            ));
             $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
           <div class="slider-item">
             <a href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
-              <?php woocommerce_show_product_sale_flash($post, $product); ?>
+              <?php woocommerce_show_product_sale_flash('', $product); ?>
               <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog'); else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" width="300px" height="300px" />'; ?>
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
@@ -109,14 +123,21 @@ $columnCount = $instance['number_of_columns'];
       <?php if (isset($instance['tab_2']) and !empty($instance['tab_2'])): ?>
       <div id="tabs-2" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_2'], 'orderby' => 'name');
+            $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_2'],
+                'orderby' => 'name',
+                'meta_query' => array(
+                    array(
+                        'key' => '_stock_status',
+                        'value' => 'instock'
+                    ),
+            ));
             $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
           <div class="slider-item">
             <a href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
-              <?php woocommerce_show_product_sale_flash($post, $product); ?>
+              <?php woocommerce_show_product_sale_flash('', $product); ?>
               <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog'); else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" width="300px" height="300px" />'; ?>
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
@@ -131,14 +152,21 @@ $columnCount = $instance['number_of_columns'];
       <?php if (isset($instance['tab_3']) and !empty($instance['tab_3'])): ?>
       <div id="tabs-3" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_3'], 'orderby' => 'name');
+            $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_3'],
+                'orderby' => 'name',
+                'meta_query' => array(
+                    array(
+                        'key' => '_stock_status',
+                        'value' => 'instock'
+                    ),
+            ));
             $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
           <div class="slider-item">
             <a href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
-              <?php woocommerce_show_product_sale_flash($post, $product); ?>
+              <?php woocommerce_show_product_sale_flash('', $product); ?>
               <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog'); else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" width="300px" height="300px" />'; ?>
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
@@ -153,14 +181,21 @@ $columnCount = $instance['number_of_columns'];
       <?php if (isset($instance['tab_4']) and !empty($instance['tab_4'])): ?>
       <div id="tabs-4" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_4'], 'orderby' => 'name');
+            $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_4'],
+                'orderby' => 'name',
+                'meta_query' => array(
+                    array(
+                        'key' => '_stock_status',
+                        'value' => 'instock'
+                    ),
+            ));
             $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
           <div class="slider-item">
             <a href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
-              <?php woocommerce_show_product_sale_flash($post, $product); ?>
+              <?php woocommerce_show_product_sale_flash('', $product); ?>
               <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog'); else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" width="300px" height="300px" />'; ?>
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>
@@ -175,14 +210,21 @@ $columnCount = $instance['number_of_columns'];
       <?php if (isset($instance['tab_5']) and !empty($instance['tab_5'])): ?>
       <div id="tabs-5" class="slider-inner">
         <?php
-            $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['tab_5'], 'orderby' => 'name');
+            $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['tab_5'],
+                'orderby' => 'name',
+                'meta_query' => array(
+                    array(
+                        'key' => '_stock_status',
+                        'value' => 'instock'
+                    ),
+            ));
             $loop = new WP_Query($args);
             while ($loop->have_posts()) :
                 $loop->the_post();
                 global $product; ?>
           <div class="slider-item">
             <a href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
-              <?php woocommerce_show_product_sale_flash($post, $product); ?>
+              <?php woocommerce_show_product_sale_flash('', $product); ?>
               <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog'); else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" width="300px" height="300px" />'; ?>
               <h5><?php the_title(); ?></h5>
               <span class="price"><?php echo $product->get_price_html(); ?></span>

@@ -2,15 +2,15 @@
 $random_id = rand();
 $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
 $category_link = get_term_link($category_term->term_id);
-$products = wc_get_products(array(
-    'category' => $instance['category_select'],
-));
 if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
     $slider_title = $instance['slider_title'];
 } else {
     $slider_title = $category_term->name;
 }
-$columnCount = $instance['number_of_columns'];
+$columnCount = (int) $instance['number_of_columns'];
+if ($columnCount === 0) {
+    $columnCount = 5;
+}
 ?>
 
 <div id="<?php echo $random_id; ?>" class="gf-product-slider">
@@ -29,7 +29,13 @@ $columnCount = $instance['number_of_columns'];
 
     <div class="slider-inner without-tabs">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 20, 'product_cat' => $instance['category_select'], 'orderby' => 'name');
+        $args = array('post_type' => 'product', 'posts_per_page' => 10, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+            'meta_query' => array(
+                array(
+                    'key' => '_stock_status',
+                    'value' => 'instock'
+                ),
+            ));
         $loop = new WP_Query($args);
         while ($loop->have_posts()) :
             $loop->the_post();
@@ -37,7 +43,7 @@ $columnCount = $instance['number_of_columns'];
             <div class="slider-item">
                 <a href="<?php echo get_permalink($loop->post->ID) ?>"
                    title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
-                    <?php woocommerce_show_product_sale_flash($post, $product); ?>
+                    <?php woocommerce_show_product_sale_flash('', $product); ?>
                     <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog'); else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" width="300px" height="300px" />'; ?>
                     <h5><?php the_title(); ?></h5>
                     <span class="price"><?php echo $product->get_price_html(); ?></span>
