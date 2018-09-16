@@ -31,30 +31,30 @@ jQuery(document).ready(function ($) {
 
 //Gf- image slider
     $('#gf-homepage-row-1').on('click', '.gf-upload-image-1', function (e) {
-        clickHandler(e, $('.image_1_value'), $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]'));
+        clickHandler(e, $('.image_1_value'), $('#widget-41_gf_image_slider_widget-2 input[name="savewidget"]'));
     });
     $('#gf-homepage-row-1').on('click', '.gf-upload-image-2', function (e) {
-        clickHandler(e, $('.image_2_value'), $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]'));
+        clickHandler(e, $('.image_2_value'), $('#widget-41_gf_image_slider_widget-2 input[name="savewidget"]'));
     });
     $('#gf-homepage-row-1').on('click', '.gf-upload-image-3', function (e) {
-        clickHandler(e, $('.image_3_value'), $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]'));
+        clickHandler(e, $('.image_3_value'), $('#widget-41_gf_image_slider_widget-2 input[name="savewidget"]'));
     });
     $('#gf-homepage-row-1').on('click', '#gf-remove-image-1', function () {
         if (confirm("Da li ste sigurni da želite da obrišete sliku ?")) {
             $('.image_1_value').val('');
-            $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]').click();
+            $('#widget-41_gf_image_slider_widget-2 input[name="savewidget"]').click();
         }
     });
     $('#gf-homepage-row-1').on('click', '#gf-remove-image-2', function () {
         if (confirm("Da li ste sigurni da želite da obrišete sliku ?")) {
             $('.image_2_value').val('');
-            $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]').click();
+            $('#widget-41_gf_image_slider_widget-2 input[name="savewidget"]').click();
         }
     });
     $('#gf-homepage-row-1').on('click', '#gf-remove-image-3', function () {
         if (confirm("Da li ste sigurni da želite da obrišete sliku ?")) {
             $('.image_3_value').val('');
-            $('#widget-41_gf_image_slider_widget-5 input[name="savewidget"]').click();
+            $('#widget-41_gf_image_slider_widget-2 input[name="savewidget"]').click();
         }
     });
 
