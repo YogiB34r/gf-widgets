@@ -140,7 +140,14 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
         $instance['slider_title'] = (!empty($new_instance['slider_title'])) ? sanitize_text_field($new_instance['slider_title']) : '';
         $instance['category_select'] = (!empty($new_instance['category_select'])) ? sanitize_text_field($new_instance['category_select']) : '';
         $instance['number_of_columns'] = (!empty($new_instance['number_of_columns'])) ? sanitize_text_field($new_instance['number_of_columns']) : '';
-      
+
+        $key = 'product-slider-without-tabs#' . serialize($old_instance);
+        $cache = new GF_Cache();
+        $keys = $cache->redis->keys($key);
+        foreach ($keys as $key){
+            $cache->redis->del($key);
+        }
+
         return $instance;
     }
 }

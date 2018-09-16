@@ -42,6 +42,8 @@ class gf_product_box_widget extends WP_Widget
 //                set_transient($key, $html, 60 * 30);
                 $cache->redis->set($key, $html, 60 * 50);
             }
+            $keys[] = $cache->redis->keys('product-box');
+
             echo $html;
         }
 
@@ -153,6 +155,13 @@ class gf_product_box_widget extends WP_Widget
         $instance = array();
         $instance['slider_title'] = (!empty($new_instance['slider_title'])) ? sanitize_text_field($new_instance['slider_title']) : '';
         $instance['category_select'] = (!empty($new_instance['category_select'])) ? sanitize_text_field($new_instance['category_select']) : '';
+
+        $key = 'product-box#' . serialize($old_instance);
+        $cache = new GF_Cache();
+        $keys = $cache->redis->keys($key);
+        foreach ($keys as $key){
+            $cache->redis->del($key);
+        }
 
         return $instance;
     }
