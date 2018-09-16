@@ -30,16 +30,10 @@ class gf_product_slider_widget extends WP_Widget
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
 
+        global $post;
+
         if (isset($instance['category_select']) and !empty($instance['category_select'])) {
-            $key = 'product-slider-tabs#' . $instance['category_select'];
-            $html = get_transient($key);
-            if ($html === false) {
-                ob_start();
-                require(realpath(__DIR__ . '/../template-parts/gf-product-slider.php'));
-                $html = ob_get_clean();
-                set_transient($key, $html, 60 * 30);
-            }
-            echo $html;
+            require(realpath(__DIR__ . '/../template-parts/gf-product-slider.php'));
         }
 
         if (isset($args['after_widget'])) {
@@ -58,8 +52,8 @@ class gf_product_slider_widget extends WP_Widget
      */
     public function form($instance)
     {
-        if (!empty(get_term_by('slug', 'specijalne-promocije', 'product_cat')->term_id)) {
-            $slider_id = get_term_by('slug', 'specijalne-promocije', 'product_cat')->term_id;
+        if (!empty(get_term_by('slug', 'gf-slider', 'product_cat')->term_id)) {
+            $slider_id = get_term_by('slug', 'gf-slider', 'product_cat')->term_id;
             $slider_title = !empty($instance['slider_title']) ? $instance['slider_title'] : esc_html__('', 'gf_product_slider_widget_domain');
             $category_select = !empty($instance['category_select']) ? $instance['category_select'] : esc_html__('', 'gf_product_slider_widget_domain');
             $columns = !empty($instance['number_of_columns']) ? $instance['number_of_columns'] : esc_html__('', 'gf_product_slider_widget_domain');
@@ -147,7 +141,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_1')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_1')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
+                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_1'])) {
                                     if ($slider_cat_child->slug == $instance['tab_1']) {
@@ -165,7 +159,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_2')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_2')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
+                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_2'])) {
                                     if ($slider_cat_child->slug == $instance['tab_2']) {
@@ -183,7 +177,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_3')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_3')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
+                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_3'])) {
                                     if ($slider_cat_child->slug == $instance['tab_3']) {
@@ -201,7 +195,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_4')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_4')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
+                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_4'])) {
                                     if ($slider_cat_child->slug == $instance['tab_4']) {
@@ -219,7 +213,7 @@ class gf_product_slider_widget extends WP_Widget
                             id="<?php echo esc_attr($this->get_field_id('tab_5')); ?>"
                             name="<?php echo esc_attr($this->get_field_name('tab_5')); ?>">
                         <option value=""><?php _e('none') ?></option>
-                        <?php foreach ($slider_cat as $slider_cat_child) : ?>
+                        <?php foreach ($childless_cat as $slider_cat_child) : ?>
                             <option
                                 <?php if (isset($instance['tab_5'])) {
                                     if ($slider_cat_child->slug == $instance['tab_5']) {
@@ -233,10 +227,10 @@ class gf_product_slider_widget extends WP_Widget
 
                 <?php
             } else {
-                echo 'Nije pronađena nijedna kategorija u Specijalnim promocijama!';
+                echo 'Nije pronađena nijedna kategorija u Gf slideru!';
             }
         }else{
-            echo 'Morate napraviti kategoriju pod imenom "Specijalne promocije"';
+            echo 'Morate napraviti kategoriju pod imenom "GF Slider"';
         }
     }
 

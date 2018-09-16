@@ -30,22 +30,19 @@ class gf_product_box_widget extends WP_Widget
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
 
+        global $post;
+
         if (isset($instance['category_select']) and !empty($instance['category_select'])) {
-            $key = 'product-box#' . $instance['category_select'];
-            $html = get_transient($key);
-            if ($html === false) {
-                ob_start();
-                require(realpath(__DIR__ . '/../template-parts/gf-product-box.php'));
-                $html = ob_get_clean();
-                set_transient($key, $html, 60 * 30);
-            }
-            echo $html;
+            require(realpath(__DIR__ . '/../template-parts/gf-product-box.php'));
         }
 
         if (isset($args['after_widget'])) {
             echo $args['after_widget'];
         }
+
+
     }
+
     /**
      * Back-end widget form.
      *

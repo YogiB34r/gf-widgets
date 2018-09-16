@@ -1,5 +1,4 @@
 <?php
-
 class gf_image_slider_widget extends WP_Widget
 {
 
@@ -26,7 +25,7 @@ class gf_image_slider_widget extends WP_Widget
     public function widget($args, $instance)
     {
         echo $args['before_widget'];
-        require(realpath(__DIR__ . '/../template-parts/gf-image-slider.php'));
+            require(realpath(__DIR__ . '/../template-parts/gf-image-slider.php'));
 
         echo $args['after_widget'];
     }
@@ -61,22 +60,21 @@ class gf_image_slider_widget extends WP_Widget
                     name="<?php echo esc_attr($this->get_field_name('image_1')); ?>"
                     type="button"
                     value="Izaberite sliku">
-            <input type="button" id="gf-remove-image-1" name="remove-image" value="Obriši sliku">
+
+
             <input class="image_1_value"
                    id=" <?php echo esc_attr($this->get_field_id('image_1_value')); ?>"
                    type="hidden"
                    name="<?php echo esc_attr($this->get_field_name('image_1_value')); ?>"
                    value="<?php echo esc_attr($image_1_value); ?>">
-            <div class="row">
-                <label for="<?php echo esc_attr($this->get_field_id('image_1_link')); ?>">
-                    <?php esc_attr_e('Link to:', 'gf_image_slider_widget_domain'); ?>
-                </label>
-                <input class=""
-                       id=" <?php echo esc_attr($this->get_field_id('image_1_link')); ?>"
-                       type="text"
-                       name="<?php echo esc_attr($this->get_field_name('image_1_link')); ?>"
-                       value="<?php echo esc_attr($image_1_link); ?>">
-            </div>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'image_1_link' ) ); ?>">
+                <?php esc_attr_e( 'Link to:', 'gf_image_slider_widget_domain' ); ?>
+            </label>
+            <input class=""
+                   id=" <?php echo esc_attr($this->get_field_id('image_1_link')); ?>"
+                   type="text"
+                   name="<?php echo esc_attr($this->get_field_name('image_1_link')); ?>"
+                   value="<?php echo esc_attr($image_1_link); ?>">
             <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_1_value); ?>"></div>
         </div>
         <div>
@@ -86,22 +84,20 @@ class gf_image_slider_widget extends WP_Widget
                     name="<?php echo esc_attr($this->get_field_name('image_2')); ?>"
                     type="button"
                     value="Izaberite sliku">
-            <input type="button" id="gf-remove-image-2" name="remove-image" value="Obriši sliku">
+
             <input class="image_2_value"
                    id=" <?php echo esc_attr($this->get_field_id('image_2_value')); ?>"
                    type="hidden"
                    name="<?php echo esc_attr($this->get_field_name('image_2_value')); ?>"
                    value="<?php echo esc_attr($image_2_value); ?>">
-            <div class="row">
-                <label for="<?php echo esc_attr($this->get_field_id('image_2_link')); ?>">
-                    <?php esc_attr_e('Link to:', 'gf_image_slider_widget_domain'); ?>
-                </label>
-                <input class=""
-                       id=" <?php echo esc_attr($this->get_field_id('image_2_link')); ?>"
-                       type="text"
-                       name="<?php echo esc_attr($this->get_field_name('image_2_link')); ?>"
-                       value="<?php echo esc_attr($image_2_link); ?>">
-            </div>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'image_2_link' ) ); ?>">
+                <?php esc_attr_e( 'Link to:', 'gf_image_slider_widget_domain' ); ?>
+            </label>
+            <input class=""
+                   id=" <?php echo esc_attr($this->get_field_id('image_2_link')); ?>"
+                   type="text"
+                   name="<?php echo esc_attr($this->get_field_name('image_2_link')); ?>"
+                   value="<?php echo esc_attr($image_2_link); ?>">
             <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_2_value); ?>"></div>
         </div>
         <div>
@@ -111,23 +107,20 @@ class gf_image_slider_widget extends WP_Widget
                     name="<?php echo esc_attr($this->get_field_name('image_3')); ?>"
                     type="button"
                     value="Izaberite sliku">
-            <input type="button" id="gf-remove-image-3" name="remove-image" value="Obriši sliku">
             <input class="image_3_value"
                    id=" <?php echo esc_attr($this->get_field_id('image_3_value')); ?>"
                    type="hidden"
                    name="<?php echo esc_attr($this->get_field_name('image_3_value')); ?>"
                    value="<?php echo esc_attr($image_3_value); ?>">
-            <div class="row">
-                <label for="<?php echo esc_attr($this->get_field_id('image_3_link')); ?>">
-                    <?php esc_attr_e('Link to:', 'gf_image_slider_widget_domain'); ?>
-                </label>
-                <input class=""
-                       id=" <?php echo esc_attr($this->get_field_id('image_3_link')); ?>"
-                       type="text"
-                       name="<?php echo esc_attr($this->get_field_name('image_3_link')); ?>"
-                       value="<?php echo esc_attr($image_3_link); ?>">
-                <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_3_value); ?>"></div>
-            </div>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'image_3_link' ) ); ?>">
+                <?php esc_attr_e( 'Link to:', 'gf_image_slider_widget_domain' ); ?>
+            </label>
+            <input class=""
+                   id=" <?php echo esc_attr($this->get_field_id('image_3_link')); ?>"
+                   type="text"
+                   name="<?php echo esc_attr($this->get_field_name('image_3_link')); ?>"
+                   value="<?php echo esc_attr($image_3_link); ?>">
+            <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_3_value); ?>"></div>
         </div>
 
         <?php

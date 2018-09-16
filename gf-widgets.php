@@ -45,5 +45,6 @@ function gf_register_widgets(){
     register_widget('gf_product_box_widget');
     register_widget('gf_image_banners_widget');
 
+
 }
 add_action('widgets_init', 'gf_register_widgets');
