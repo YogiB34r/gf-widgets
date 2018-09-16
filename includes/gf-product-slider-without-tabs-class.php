@@ -30,17 +30,21 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
 
-        global $post;
-
         if (isset($instance['category_select']) and !empty($instance['category_select'])) {
-            require(realpath(__DIR__ . '/../template-parts/gf-product-slider-without-tabs.php'));
+            $key = 'product-slider-tabs#' . $instance['category_select'];
+            $html = get_transient($key);
+            if ($html === false) {
+                ob_start();
+                require(realpath(__DIR__ . '/../template-parts/gf-product-slider-without-tabs.php'));
+                $html = ob_get_clean();
+                set_transient($key, $html, 60 * 30);
+            }
+            echo $html;
         }
 
         if (isset($args['after_widget'])) {
             echo $args['after_widget'];
         }
-
-
     }
 
     /**
@@ -52,8 +56,8 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
      */
     public function form($instance)
     {
-        if (!empty(get_term_by('slug', 'gf-slider', 'product_cat')->term_id)) {
-            $slider_id = get_term_by('slug', 'gf-slider', 'product_cat')->term_id;
+        if (!empty(get_term_by('slug', 'specijalne-promocije', 'product_cat')->term_id)) {
+            $slider_id = get_term_by('slug', 'specijalne-promocije', 'product_cat')->term_id;
             $slider_title = !empty($instance['slider_title']) ? $instance['slider_title'] : esc_html__('', 'gf_product_slider_without_tabs_widget_domain');
             $category_select = !empty($instance['category_select']) ? $instance['category_select'] : esc_html__('', 'gf_product_slider_without_tabs_widget_domain');
             $cat_args = array(
@@ -108,10 +112,10 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
 
                 <?php
             } else {
-                echo 'Nije pronađena nijedna kategorija u Gf slideru!';
+                echo 'Nije pronađena nijedna kategorija u Specijalnim promocijama!';
             }
         }else{
-            echo 'Morate napraviti kategoriju pod imenom "GF Slider"';
+            echo 'Morate napraviti kategoriju pod imenom "Specijalne promocije"';
         }
     }
 
