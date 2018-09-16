@@ -265,12 +265,12 @@ class gf_product_slider_widget extends WP_Widget
         $instance['tab_4'] = (!empty($new_instance['tab_4'])) ? sanitize_text_field($new_instance['tab_4']) : '';
         $instance['tab_5'] = (!empty($new_instance['tab_5'])) ? sanitize_text_field($new_instance['tab_5']) : '';
 
-        $key = 'product-slider-tabs#' . serialize($old_instance);
-        $cache = new GF_Cache();
-        $keys = $cache->redis->keys($key);
-        foreach ($keys as $key){
-            $cache->redis->del($key);
+        foreach ($old_instance as $instance_key => $value){
+            $key = 'product-slider-tabs#' . $instance_key;
+            $this->cache->redis->del($key);
         }
+
+        $this->generateBoxHtml($instance);
 
 
         return $instance;

@@ -159,8 +159,7 @@ class gf_product_box_widget extends WP_Widget
         $instance['category_select'] = (!empty($new_instance['category_select'])) ? sanitize_text_field($new_instance['category_select']) : '';
 
         $key = 'product-box#' . $old_instance['category_select'];
-        $cache = new GF_Cache();
-        $cache->redis->del($key);
+        $this->cache->redis->del($key);
         $this->generateBoxHtml($instance);
 
         return $instance;
