@@ -32,12 +32,15 @@ class gf_product_box_widget extends WP_Widget
 
         if (isset($instance['category_select']) and !empty($instance['category_select'])) {
             $key = 'product-box#' . $instance['category_select'];
-            $html = get_transient($key);
+            $cache = new GF_Cache();
+//            $html = get_transient($key);
+            $html = $cache->redis->get($key);
             if ($html === false) {
                 ob_start();
                 require(realpath(__DIR__ . '/../template-parts/gf-product-box.php'));
                 $html = ob_get_clean();
-                set_transient($key, $html, 60 * 30);
+//                set_transient($key, $html, 60 * 30);
+                $cache->redis->set($key, $html, 60 * 50);
             }
             echo $html;
         }

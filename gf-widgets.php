@@ -32,6 +32,7 @@ require_once(plugin_dir_path(__FILE__) . '/includes/gf-product-slider-class.php'
 require_once(plugin_dir_path(__FILE__) . '/includes/gf-product-slider-without-tabs-class.php');
 require_once(plugin_dir_path(__FILE__) . '/includes/gf-product-box-class.php');
 require_once(plugin_dir_path(__FILE__) . '/includes/gf-image-banners-class.php');
+require_once(plugin_dir_path(__FILE__) . '/includes/GF_Cache.php');
 
 
 function gf_register_widgets(){
