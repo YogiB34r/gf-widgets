@@ -5,7 +5,7 @@ function gf_add_frontend_scripts(){
     // Widget specific css
 
 //    jQuerry UI
-//    wp_enqueue_style('jQuerry-ui' ,'//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+    wp_enqueue_style('jQuerry-ui' ,'//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
 
 
 //    wp_enqueue_style('gf-social-icons-css', plugins_url() . '/gf-widgets/css/gf-social-icons-widget.css');

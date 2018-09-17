@@ -73,7 +73,7 @@ class gf_product_slider_widget extends WP_Widget
             $slider_id = get_term_by('slug', 'specijalne-promocije', 'product_cat')->term_id;
             $slider_title = !empty($instance['slider_title']) ? $instance['slider_title'] : esc_html__('Specijalne Promocije', 'gf_product_slider_widget_domain');
             $columns = !empty($instance['number_of_columns']) ? $instance['number_of_columns'] : esc_html__('', 'gf_product_slider_widget_domain');
-            $title_link = !empty($instance['title_link']) ? $instance['title_link'] : esc_html__('https://', 'gf_product_slider_widget_domain');
+            $title_link = !empty($instance['title_link']) ? $instance['title_link'] : esc_html__('/specijalne-promocije/', 'gf_product_slider_widget_domain');
             $slider_cat = get_terms('product_cat', array('parent'=> $slider_id));
             if (!empty($slider_cat)) {
                 $columns = 4;

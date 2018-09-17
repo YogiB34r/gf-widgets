@@ -9,7 +9,7 @@ $itemLimit = 10;
   <div id="<?php echo $random_id;?>" class="gf-product-slider">
     <div id="tabs">
       <div class="row gf-product-slider__header">
-        <h3 class="gf-product-slider__header__title"><a href="<?=$instance['title_link']?>"><?= $instance['slider_title'] ?></a></h3>
+        <h3 class="gf-product-slider__header__title"><a href="<?=get_home_url().$instance['title_link']?>"><?= $instance['slider_title'] ?></a></h3>
           <?php if (isset($instance['tab_1']) && !empty(($instance['tab_1'])) ||
                     isset($instance['tab_2']) && !empty(($instance['tab_2'])) ||
                     isset($instance['tab_3']) && !empty(($instance['tab_3'])) ||
