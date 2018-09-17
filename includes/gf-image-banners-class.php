@@ -49,10 +49,11 @@ class gf_image_banners_widget extends WP_Widget
     public function form($instance)
     {
         $cat_args = array(
-            'orderby' => 'name',
-            'order' => 'asc',
-            'hide_empty' => 'true',
-            'hierarchical' => 1
+            'orderby'   => 'name',
+            'order'     => 'ASC',
+            'hierarchical' => 1,
+            'hide_empty'    => '0'
+
         );
 
         $product_categories = get_terms('product_cat', $cat_args);

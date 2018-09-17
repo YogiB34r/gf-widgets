@@ -85,6 +85,17 @@ class gf_product_slider_widget extends WP_Widget
                 $tab_3 = !empty($instance['tab_3']) ? $instance['tab_3'] : esc_html__('', 'gf_product_slider_widget_domain');
                 $tab_4 = !empty($instance['tab_4']) ? $instance['tab_4'] : esc_html__('', 'gf_product_slider_widget_domain');
                 $tab_5 = !empty($instance['tab_5']) ? $instance['tab_5'] : esc_html__('', 'gf_product_slider_widget_domain');
+
+                // link select from category
+                $link_select = !empty($instance['link_select']) ? $instance['link_select'] : esc_html__('', 'gf_product_slider_without_tabs_widget_domain');
+                $link_cat_args = array(
+                    'orderby'   => 'name',
+                    'order'     => 'ASC',
+                    'hierarchical' => 1,
+                    'hide_empty'    => '0'
+
+                );
+                $link_categories = get_terms('product_cat', $link_cat_args);
                 ?>
 
                 <div class="gf-product-slider-wrapper">
@@ -96,14 +107,25 @@ class gf_product_slider_widget extends WP_Widget
                            type="text"
                            name="<?php echo esc_attr($this->get_field_name('slider_title')); ?>"
                            value="<?php echo esc_attr($slider_title); ?>">
-                    <label for="<?php echo esc_attr($this->get_field_id('$title_link')); ?>">
-                        <?php esc_attr_e('Title link', 'gf_product_slider_widget_domain'); ?>
+                    <!--link select-->
+                    <label for="<?php echo esc_attr($this->get_field_id('link_select')); ?>">
+                        <?php esc_attr_e('Link to:', 'gf_product_slider_without_tabs_widget_domain'); ?>
                     </label>
-                    <input class="gf-slider-title-link widefat"
-                           id="<?php echo esc_attr($this->get_field_id('title_link')); ?>"
-                           type="text"
-                           name="<?php echo esc_attr($this->get_field_name('title_link')); ?>"
-                           value="<?php echo esc_attr($title_link); ?>">
+                    <select
+                            class="gf-category-select widefat"
+                            id="<?php echo esc_attr($this->get_field_id('link_select')); ?>"
+                            name="<?php echo esc_attr($this->get_field_name('link_select')); ?>">
+                        <?php foreach ($link_categories as $link_category) : ?>
+                            <option
+                                <?php if (isset($instance['link_select'])) {
+                                    if ($link_category->slug == $instance['link_select']) {
+                                        echo 'selected';
+                                    }
+                                } ?> value="<?= $link_category->slug ?>"><?= $link_category->name ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+
                     <label for="<?php echo esc_attr($this->get_field_id('number_of_columns')); ?>">
                         <?php esc_attr_e('Number of columns (Max 6)', 'gf_product_slider_widget_domain'); ?>
                     </label>
@@ -228,13 +250,13 @@ class gf_product_slider_widget extends WP_Widget
         global $slider_id;
         $instance = array();
         $instance['slider_title'] = (!empty($new_instance['slider_title'])) ? sanitize_text_field($new_instance['slider_title']) : '';
-        $instance['title_link'] = (!empty($new_instance['title_link'])) ? sanitize_text_field($new_instance['title_link']) : '';
         $instance['number_of_columns'] = (!empty($new_instance['number_of_columns'])) ? sanitize_text_field($new_instance['number_of_columns']) : '';
         $instance['tab_1'] = (!empty($new_instance['tab_1'])) ? sanitize_text_field($new_instance['tab_1']) : '';
         $instance['tab_2'] = (!empty($new_instance['tab_2'])) ? sanitize_text_field($new_instance['tab_2']) : '';
         $instance['tab_3'] = (!empty($new_instance['tab_3'])) ? sanitize_text_field($new_instance['tab_3']) : '';
         $instance['tab_4'] = (!empty($new_instance['tab_4'])) ? sanitize_text_field($new_instance['tab_4']) : '';
         $instance['tab_5'] = (!empty($new_instance['tab_5'])) ? sanitize_text_field($new_instance['tab_5']) : '';
+        $instance['link_select'] = (!empty($new_instance['link_select'])) ? sanitize_text_field($new_instance['link_select']) : '';
 
         $key = 'product-slider-tabs#' . serialize($old_instance);
         $this->cache->redis->del($key);

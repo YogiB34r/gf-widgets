@@ -1,7 +1,8 @@
 <?php
 $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
+$link_term = get_term_by('slug', $instance['link_select'], 'product_cat');
 if ($category_term){
-$category_link = get_term_link($category_term->term_id);
+$category_link = get_term_link($link_term->term_id);
 if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
     $slider_title = $instance['slider_title'];
 } else {
