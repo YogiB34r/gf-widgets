@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 				}
 			}
 		});
-		startSlider('#tabs-0');
+		startSlider('#tabs-1');
 		hookSliderEvents();
 		startSlider('.without-tabs');
   }
