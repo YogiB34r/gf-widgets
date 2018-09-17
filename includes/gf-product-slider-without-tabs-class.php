@@ -2,6 +2,7 @@
 
 class gf_product_slider_without_tabs_widget extends WP_Widget
 {
+    private $cache;
 
     /**
      * Register widget with WordPress.
@@ -33,22 +34,26 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
         }
 
         if (isset($instance['category_select']) and !empty($instance['category_select'])) {
-            $key = 'product-slider-without-tabs#' . serialize($instance);
-            $html = $this->cache->redis->get($key);
-            if ($html === false) {
-                ob_start();
-                require(realpath(__DIR__ . '/../template-parts/gf-product-slider-without-tabs.php'));
-                $html = ob_get_clean();
-                $this->cache->redis->set($key, $html);
-            }
-            echo $html;
+            echo $this->generateBoxHtml($instance);
         }
 
         if (isset($args['after_widget'])) {
             echo $args['after_widget'];
         }
+    }
 
+    private function generateBoxHtml($instance)
+    {
+        $key = 'product-slider-without-tabs#' . serialize($instance);
+        $html = $this->cache->redis->get($key);
+        if ($html === false) {
+            ob_start();
+            require(realpath(__DIR__ . '/../template-parts/gf-product-slider-without-tabs.php'));
+            $html = ob_get_clean();
+            $this->cache->redis->set($key, $html);
+        }
 
+        return $html;
     }
 
     /**
@@ -140,7 +145,7 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
         $instance['category_select'] = (!empty($new_instance['category_select'])) ? sanitize_text_field($new_instance['category_select']) : '';
         $instance['number_of_columns'] = (!empty($new_instance['number_of_columns'])) ? sanitize_text_field($new_instance['number_of_columns']) : '';
 
-        $key = 'product-slider-without-tabs#' . $old_instance['category_select'];
+        $key = 'product-slider-without-tabs#' . serialize($old_instance);
         $this->cache->redis->del($key);
         $this->generateBoxHtml($instance);
 

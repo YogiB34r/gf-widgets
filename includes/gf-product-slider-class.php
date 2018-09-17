@@ -2,6 +2,7 @@
 
 class gf_product_slider_widget extends WP_Widget
 {
+    private $cache;
 
     /**
      * Register widget with WordPress.
@@ -36,22 +37,27 @@ class gf_product_slider_widget extends WP_Widget
             isset($instance['tab_3']) && !empty(($instance['tab_3'])) ||
             isset($instance['tab_4']) && !empty(($instance['tab_4'])) ||
             isset($instance['tab_5']) && !empty(($instance['tab_5']))) {
-            $key = 'product-slider-tabs#' . serialize($instance);
-            $html = $this->cache->redis->get($key);
-            if ($html === false) {
-                ob_start();
-                require(realpath(__DIR__ . '/../template-parts/gf-product-slider.php'));
-                $html = ob_get_clean();
-                $this->cache->redis->set($key, $html);
-            }
-            echo $html;
+
+            echo $this->generateBoxHtml($instance);
         }
 
         if (isset($args['after_widget'])) {
             echo $args['after_widget'];
         }
+    }
 
+    private function generateBoxHtml($instance)
+    {
+        $key = 'product-slider-tabs#' . serialize($instance);
+        $html = $this->cache->redis->get($key);
+        if ($html === false) {
+            ob_start();
+            require(realpath(__DIR__ . '/../template-parts/gf-product-slider.php'));
+            $html = ob_get_clean();
+            $this->cache->redis->set($key, $html);
+        }
 
+        return $html;
     }
 
     /**
@@ -230,12 +236,9 @@ class gf_product_slider_widget extends WP_Widget
         $instance['tab_4'] = (!empty($new_instance['tab_4'])) ? sanitize_text_field($new_instance['tab_4']) : '';
         $instance['tab_5'] = (!empty($new_instance['tab_5'])) ? sanitize_text_field($new_instance['tab_5']) : '';
 
-        foreach ($old_instance as $instance_key => $value){
-            $key = 'product-slider-tabs#' . $instance_key;
-            $this->cache->redis->del($key);
-        }
-
-        $this->generateBoxHtml($instance);
+        $key = 'product-slider-tabs#' . serialize($old_instance);
+        $this->cache->redis->del($key);
+        $this->generateBoxHtml($new_instance);
 
         return $instance;
     }
