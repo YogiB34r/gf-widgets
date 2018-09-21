@@ -4,7 +4,7 @@ $columnCount = (int) $instance['number_of_columns'];
 if ($columnCount === 0) {
     $columnCount = 5;
 }
-$itemLimit = 10;
+$itemLimit = 16;
 $link_term = get_term_by('slug', $instance['link_select'], 'product_cat');
 $category_link = get_term_link($link_term->term_id);
 

@@ -31,7 +31,7 @@ if ($columnCount === 0) {
 
     <div class="slider-inner without-tabs">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 10, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array('post_type' => 'product', 'posts_per_page' => 16, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
             'meta_query' => array(
                 array(
                     'key' => '_stock_status',
