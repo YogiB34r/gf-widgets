@@ -29,7 +29,8 @@ class gf_social_icons_widget extends WP_Widget
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
 
-        require(realpath(__DIR__ . '/../template-parts/gf-social-icons.php'));
+//        require(realpath(__DIR__ . '/../template-parts/gf-social-icons.php'));
+        require(realpath(__DIR__ . '/../template-parts/gf-social-icons-only-icons.php'));
 
 
         echo $args['after_widget'];
