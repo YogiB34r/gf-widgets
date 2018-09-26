@@ -26,13 +26,13 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
         $loop = new WP_Query($args);
         while ($loop->have_posts()) :
             $loop->the_post();
-            global $product; ?>
+            global $product;
+            ?>
             <div class="col-6 col-md-4 col-lg-3 col-xl-2 gf-category-box__item">
                 <a href="<?php echo get_permalink($loop->post->ID) ?>"
                    title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>">
                     <?php woocommerce_show_product_sale_flash('', $product); ?>
-                    <?php add_stickers_to_products_new();
-                    add_stickers_to_products_soldout()?>
+                    <?php add_stickers_to_products_new();?>
                     <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'shop_catalog'); else echo '<img src="' . wc_placeholder_img_src() . '" alt="Placeholder" width="300px" height="300px" />'; ?>
                     <h5><?php the_title(); ?></h5>
                     <span class="price"><?php echo $product->get_price_html(); ?></span>
