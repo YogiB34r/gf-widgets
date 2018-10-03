@@ -204,6 +204,4 @@ $category_link = get_term_link($link_term->term_id);
     </div>
     <!--    slider-inner-->
   </div>
-  <script>
-    var gfSliderColumnCount = <?=$columnCount;?>;
-  </script>
+  <script>var gfSliderColumnCount=<?=$columnCount;?>;</script>

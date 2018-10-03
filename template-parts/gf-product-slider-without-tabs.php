@@ -56,6 +56,4 @@ if ($columnCount === 0) {
         <?php wp_reset_query(); ?>
     </div><!--    slider-inner-->
 </div>
-<script>
-    var gfSliderColumnCount = <?=$columnCount;?>;
-</script>
+<script>var gfSliderColumnCount=<?=$columnCount?>;</script>
