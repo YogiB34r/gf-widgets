@@ -1,5 +1,6 @@
 
 
 <a href="<?=get_home_url()?>">
-    <img class="gf-header-logo" src="<?=$instance['logo_image_value']?>" >
+    <?php list($width, $height) = getimagesize($instance['logo_image_value']); ?>
+    <img class="gf-header-logo" src="<?=$instance['logo_image_value']?>" width="<?=$width?>" height="auto" >
 </a>

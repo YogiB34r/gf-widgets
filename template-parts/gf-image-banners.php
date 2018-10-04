@@ -15,22 +15,26 @@ $category_link_4 = get_term_link($category_term_4->term_id);
 <div class="row gf-image-banners">
     <div class="col-6 gf-image-banners__item">
         <a href="<?=$category_link_1?>" target="_self">
-            <img src="<?= $instance['image_banner_1_value'] ?>" >
+            <?php list($width_1, $height_1) = getimagesize($instance['image_banner_1_value']); ?>
+            <img src="<?= $instance['image_banner_1_value'] ?>" width="<?=$width_1?>" height="auto" >
         </a>
     </div>
     <div class="col-6 gf-image-banners__item">
         <a href="<?=$category_link_2?>" target="_blank">
-            <img src="<?= $instance['image_banner_2_value'] ?>">
+            <?php list($width_2, $height_2) = getimagesize($instance['image_banner_2_value']); ?>
+            <img src="<?= $instance['image_banner_2_value'] ?>" width="<?=$width_2?>" height="auto">
         </a>
     </div>
     <div class="col-6 gf-image-banners__item">
         <a href="<?=$category_link_3?>" target="_blank">
-            <img src="<?= $instance['image_banner_3_value'] ?>">
+            <?php list($width_3, $height_3) = getimagesize($instance['image_banner_3_value']); ?>
+            <img src="<?= $instance['image_banner_3_value'] ?>" width="<?=$width_3?>" height="auto">
         </a>
     </div>
     <div class="col-6 gf-image-banners__item">
         <a href="<?=$category_link_4?>" target="_blank">
-            <img src="<?= $instance['image_banner_4_value'] ?>">
+            <?php list($width_4, $height_4) = getimagesize($instance['image_banner_2_value']); ?>
+            <img src="<?= $instance['image_banner_4_value'] ?>" width="<?=$width_4?>" height="auto">
         </a>
     </div>
 </div>
