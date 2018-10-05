@@ -31,7 +31,9 @@ class gf_image_banners_widget extends WP_Widget
                 isset($instance['category_select_1']) and !empty($instance['category_select_1']) and
                 isset($instance['category_select_2']) and !empty($instance['category_select_2']) and
                 isset($instance['category_select_3']) and !empty($instance['category_select_3']) and
-                isset($instance['category_select_4']) and !empty($instance['category_select_4']))
+                isset($instance['category_select_4']) and !empty($instance['category_select_4']) and
+                isset($instance['category_select_5']) and !empty($instance['category_select_4']) and
+                isset($instance['category_select_6']) and !empty($instance['category_select_4']))
             {
                 require(realpath(__DIR__ . '/../template-parts/gf-image-banners.php'));
         }
@@ -75,12 +77,20 @@ class gf_image_banners_widget extends WP_Widget
         $image_4_value = !empty($instance['image_banner_4_value']) ? $instance['image_banner_4_value'] : esc_html__('', 'gf_image_banners_widget_domain');
         $category_select_4 = !empty($instance['category_select_4']) ? $instance['category_select_4'] : esc_html__('', 'gf_image_banners_widget_domain');
 
+        $image_5 = !empty($instance['image_banner_5']) ? $instance['image_banner_5'] : esc_html__('Image 5', 'gf_image_banners_widget_domain');
+        $image_5_value = !empty($instance['image_banner_5_value']) ? $instance['image_banner_5_value'] : esc_html__('', 'gf_image_banners_widget_domain');
+        $category_select_5 = !empty($instance['category_select_5']) ? $instance['category_select_5'] : esc_html__('', 'gf_image_banners_widget_domain');
+
+        $image_6 = !empty($instance['image_banner_6']) ? $instance['image_banner_6'] : esc_html__('Image 6', 'gf_image_banners_widget_domain');
+        $image_6_value = !empty($instance['image_banner_6_value']) ? $instance['image_banner_6_value'] : esc_html__('', 'gf_image_banners_widget_domain');
+        $category_select_6 = !empty($instance['category_select_6']) ? $instance['category_select_6'] : esc_html__('', 'gf_image_banners_widget_domain');
+
         ?>
 
         <div class="gf-image-banner-widget-form">
             <div class="gf-image-banner-block">
                 <label for="<?php echo esc_attr($this->get_field_id('image_banner_1')); ?>">
-                    <?php esc_attr_e('Banner 1', 'gf_product_slider_without_tabs_widget_domain'); ?>
+                    <?php esc_attr_e('Banner 1 (veca slika)', 'gf_product_slider_without_tabs_widget_domain'); ?>
                 </label>
                 <input
                         class="gf-upload-banner-image-1 widefat"
@@ -88,6 +98,7 @@ class gf_image_banners_widget extends WP_Widget
                         name="<?php echo esc_attr($this->get_field_name('image_banner_1')); ?>"
                         type="button"
                         value="Izaberite sliku">
+                <input type="button" id="gf-remove-image-banner-1" name="remove-image" value="Obriši sliku">
 
                 <input class="image_banner_1_value"
                        id=" <?php echo esc_attr($this->get_field_id('image_banner_1_value')); ?>"
@@ -113,7 +124,7 @@ class gf_image_banners_widget extends WP_Widget
             </div>
             <div class="gf-image-banner-block">
                 <label for="<?php echo esc_attr($this->get_field_id('image_banner_2')); ?>">
-                    <?php esc_attr_e('Banner 2', 'gf_product_slider_without_tabs_widget_domain'); ?>
+                    <?php esc_attr_e('Banner 2 (manja slika)', 'gf_product_slider_without_tabs_widget_domain'); ?>
                 </label>
                 <input
                         class="gf-upload-banner-image-2 widefat"
@@ -121,6 +132,8 @@ class gf_image_banners_widget extends WP_Widget
                         name="<?php echo esc_attr($this->get_field_name('image_banner_2')); ?>"
                         type="button"
                         value="Izaberite sliku">
+                <input type="button" id="gf-remove-image-banner-2" name="remove-image" value="Obriši sliku">
+
 
                 <input class="image_banner_2_value"
                        id=" <?php echo esc_attr($this->get_field_id('image_banner_2_value')); ?>"
@@ -145,7 +158,7 @@ class gf_image_banners_widget extends WP_Widget
             </div>
             <div class="gf-image-banner-block">
                 <label for="<?php echo esc_attr($this->get_field_id('image_banner_3')); ?>">
-                    <?php esc_attr_e('Banner 3', 'gf_product_slider_without_tabs_widget_domain'); ?>
+                    <?php esc_attr_e('Banner 3 (manja slika)', 'gf_product_slider_without_tabs_widget_domain'); ?>
                 </label>
                 <input
                         class="gf-upload-banner-image-3 widefat"
@@ -153,6 +166,8 @@ class gf_image_banners_widget extends WP_Widget
                         name="<?php echo esc_attr($this->get_field_name('image_banner_3')); ?>"
                         type="button"
                         value="Izaberite sliku">
+                <input type="button" id="gf-remove-image-banner-3" name="remove-image" value="Obriši sliku">
+
                 <input class="image_banner_3_value"
                        id=" <?php echo esc_attr($this->get_field_id('image_banner_3_value')); ?>"
                        type="hidden"
@@ -176,7 +191,7 @@ class gf_image_banners_widget extends WP_Widget
             </div>
             <div class="gf-image-banner-block">
                 <label for="<?php echo esc_attr($this->get_field_id('image_banner_4')); ?>">
-                    <?php esc_attr_e('Banner 4', 'gf_product_slider_without_tabs_widget_domain'); ?>
+                    <?php esc_attr_e('Banner 4 (veca slika)', 'gf_product_slider_without_tabs_widget_domain'); ?>
                 </label>
                 <input
                         class="gf-upload-banner-image-4 widefat"
@@ -184,6 +199,8 @@ class gf_image_banners_widget extends WP_Widget
                         name="<?php echo esc_attr($this->get_field_name('image_banner_4')); ?>"
                         type="button"
                         value="Izaberite sliku">
+                <input type="button" id="gf-remove-image-banner-4" name="remove-image" value="Obriši sliku">
+
                 <input class="image_banner_4_value"
                        id=" <?php echo esc_attr($this->get_field_id('image_banner_4_value')); ?>"
                        type="hidden"
@@ -204,6 +221,72 @@ class gf_image_banners_widget extends WP_Widget
                     <?php endforeach; ?>
                 </select>
                 <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_4_value); ?>"></div>
+            </div>
+            <div class="gf-image-banner-block">
+                <label for="<?php echo esc_attr($this->get_field_id('image_banner_5')); ?>">
+                    <?php esc_attr_e('Banner 5 (manja slika)', 'gf_product_slider_without_tabs_widget_domain'); ?>
+                </label>
+                <input
+                        class="gf-upload-banner-image-5 widefat"
+                        id="upload-banner-image-5"
+                        name="<?php echo esc_attr($this->get_field_name('image_banner_5')); ?>"
+                        type="button"
+                        value="Izaberite sliku">
+                <input type="button" id="gf-remove-image-banner-5" name="remove-image" value="Obriši sliku">
+
+                <input class="image_banner_5_value"
+                       id=" <?php echo esc_attr($this->get_field_id('image_banner_5_value')); ?>"
+                       type="hidden"
+                       name="<?php echo esc_attr($this->get_field_name('image_banner_5_value')); ?>"
+                       value="<?php echo esc_attr($image_5_value); ?>">
+                <select
+                        class="gf-category-select widefat"
+                        id="<?php echo esc_attr($this->get_field_id('category_select_5')); ?>"
+                        name="<?php echo esc_attr($this->get_field_name('category_select_5')); ?>">
+                    <?php foreach ($product_categories as $category) : ?>
+                        <option
+                            <?php if (isset($instance['category_select_5'])) {
+                                if ($category->slug == $instance['category_select_5']) {
+                                    echo 'selected';
+                                }
+                            } ?> value="<?= $category->slug ?>"><?= $category->name ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_5_value); ?>"></div>
+            </div>
+            <div class="gf-image-banner-block">
+                <label for="<?php echo esc_attr($this->get_field_id('image_banner_6')); ?>">
+                    <?php esc_attr_e('Banner 6 (manja slika)', 'gf_product_slider_without_tabs_widget_domain'); ?>
+                </label>
+                <input
+                        class="gf-upload-banner-image-6 widefat"
+                        id="upload-banner-image-6"
+                        name="<?php echo esc_attr($this->get_field_name('image_banner_6')); ?>"
+                        type="button"
+                        value="Izaberite sliku">
+                <input type="button" id="gf-remove-image-banner-6" name="remove-image" value="Obriši sliku">
+
+                <input class="image_banner_6_value"
+                       id=" <?php echo esc_attr($this->get_field_id('image_banner_6_value')); ?>"
+                       type="hidden"
+                       name="<?php echo esc_attr($this->get_field_name('image_banner_6_value')); ?>"
+                       value="<?php echo esc_attr($image_6_value); ?>">
+                <select
+                        class="gf-category-select widefat"
+                        id="<?php echo esc_attr($this->get_field_id('category_select_6')); ?>"
+                        name="<?php echo esc_attr($this->get_field_name('category_select_6')); ?>">
+                    <?php foreach ($product_categories as $category) : ?>
+                        <option
+                            <?php if (isset($instance['category_select_6'])) {
+                                if ($category->slug == $instance['category_select_6']) {
+                                    echo 'selected';
+                                }
+                            } ?> value="<?= $category->slug ?>"><?= $category->name ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_6_value); ?>"></div>
             </div>
         </div>
 
@@ -238,6 +321,14 @@ class gf_image_banners_widget extends WP_Widget
         $instance['image_banner_4'] = (!empty($new_instance['image_banner_4'])) ? sanitize_text_field($new_instance['image_banner_4']) : '';
         $instance['image_banner_4_value'] = (!empty($new_instance['image_banner_4_value'])) ? sanitize_text_field($new_instance['image_banner_4_value']) : '';
         $instance['category_select_4'] = (!empty($new_instance['category_select_4'])) ? sanitize_text_field($new_instance['category_select_4']) : '';
+
+        $instance['image_banner_5'] = (!empty($new_instance['image_banner_5'])) ? sanitize_text_field($new_instance['image_banner_5']) : '';
+        $instance['image_banner_5_value'] = (!empty($new_instance['image_banner_5_value'])) ? sanitize_text_field($new_instance['image_banner_5_value']) : '';
+        $instance['category_select_5'] = (!empty($new_instance['category_select_5'])) ? sanitize_text_field($new_instance['category_select_5']) : '';
+
+        $instance['image_banner_6'] = (!empty($new_instance['image_banner_6'])) ? sanitize_text_field($new_instance['image_banner_6']) : '';
+        $instance['image_banner_6_value'] = (!empty($new_instance['image_banner_6_value'])) ? sanitize_text_field($new_instance['image_banner_6_value']) : '';
+        $instance['category_select_6'] = (!empty($new_instance['category_select_6'])) ? sanitize_text_field($new_instance['category_select_6']) : '';
 
         return $instance;
     }
