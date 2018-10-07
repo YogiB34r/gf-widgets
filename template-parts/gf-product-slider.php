@@ -5,11 +5,13 @@ if ($columnCount === 0) {
     $columnCount = 5;
 }
 $itemLimit = 16;
+if (wp_is_mobile()) {
+    $itemLimit = 10;
+}
 $link_term = get_term_by('slug', $instance['link_select'], 'product_cat');
 $category_link = get_term_link($link_term->term_id);
-
 ?>
-  <div id="<?php echo $random_id;?>" class="gf-product-slider">
+  <div id="<?php echo $random_id;?>" class="gf-product-slider" data-slider-item-count="<?=$columnCount?>">
     <div id="tabs">
       <div class="row gf-product-slider__header">
         <h3 class="gf-product-slider__header__title"><a href="<?=$category_link?>"><?= $instance['slider_title'] ?></a></h3>
@@ -204,4 +206,3 @@ $category_link = get_term_link($link_term->term_id);
     </div>
     <!--    slider-inner-->
   </div>
-  <script>var gfSliderColumnCount=<?=$columnCount;?>;</script>

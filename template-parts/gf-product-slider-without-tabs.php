@@ -13,9 +13,12 @@ $columnCount = (int) $instance['number_of_columns'];
 if ($columnCount === 0) {
     $columnCount = 5;
 }
+$itemLimit = 16;
+if (wp_is_mobile()) {
+    $itemLimit = 10;
+}
 ?>
-
-<div id="<?php echo $random_id; ?>" class="gf-product-slider">
+<div id="<?php echo $random_id; ?>" class="gf-product-slider" data-slider-item-count="<?=$columnCount?>">
     <div class="row gf-product-slider__header gf-product-slider__header--without-tabs">
         <h3 class="gf-product-slider__header__title"><a href="<?= $category_link ?>"><?= $slider_title ?></a></h3>
 
@@ -31,7 +34,7 @@ if ($columnCount === 0) {
 
     <div class="slider-inner without-tabs">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 16, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
             'meta_query' => array(
                 array(
                     'key' => '_stock_status',
@@ -56,4 +59,3 @@ if ($columnCount === 0) {
         <?php wp_reset_query(); ?>
     </div><!--    slider-inner-->
 </div>
-<script>var gfSliderColumnCount=<?=$columnCount?>;</script>
