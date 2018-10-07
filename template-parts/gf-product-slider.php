@@ -2,7 +2,7 @@
 $random_id = rand();
 $columnCount = (int) $instance['number_of_columns'];
 if ($columnCount === 0) {
-    $columnCount = 5;
+    $columnCount = 4;
 }
 $itemLimit = 16;
 if (wp_is_mobile()) {
