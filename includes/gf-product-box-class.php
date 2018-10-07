@@ -100,21 +100,9 @@ class gf_product_box_widget extends WP_Widget
                     $category_term = get_term_by('slug', $instance['category_select'], 'product_cat');
                     $product_count = $category_term->count;
                 }
-                if (isset($instance['number_of_columns']) and !empty($instance['number_of_columns'])) {
-                    if ($product_count < $instance['number_of_columns']) {
-                        if ($product_count >= 6) {
-                            $columns = 6;
-                        } else {
-                            $columns = $product_count;
-                        }
-                    } else {
-                        $columns = $instance['number_of_columns'];
-                    }
-
-                } else {
-                    $columns = 4;
+                if (isset($instance['number_of_columns']) && !empty($instance['number_of_columns'])) {
+                    $columns = $instance['number_of_columns'];
                 }
-
                 ?>
 
                 <div class="gf-product-slider-wrapper">
@@ -143,6 +131,14 @@ class gf_product_box_widget extends WP_Widget
                             </option>
                         <?php endforeach; ?>
                     </select>
+                    <label for="<?php echo esc_attr($this->get_field_id('number_of_columns')); ?>">
+                        <?php esc_attr_e('Number of columns (Max 6)', 'gf_product_box_widget_domain'); ?>
+                    </label>
+                    <input class="gf-number-of-columns widefat"
+                           id="<?php echo esc_attr($this->get_field_id('number_of_columns')); ?>"
+                           type="number"
+                           name="<?php echo esc_attr($this->get_field_name('number_of_columns')); ?>"
+                           value="<?php echo esc_attr($columns); ?>">
 
                     <!--link select-->
                     <label for="<?php echo esc_attr($this->get_field_id('link_select')); ?>">
@@ -189,6 +185,7 @@ class gf_product_box_widget extends WP_Widget
         $instance['slider_title'] = (!empty($new_instance['slider_title'])) ? sanitize_text_field($new_instance['slider_title']) : '';
         $instance['category_select'] = (!empty($new_instance['category_select'])) ? sanitize_text_field($new_instance['category_select']) : '';
         $instance['link_select'] = (!empty($new_instance['link_select'])) ? sanitize_text_field($new_instance['link_select']) : '';
+        $instance['number_of_columns'] = (!empty($new_instance['number_of_columns'])) ? sanitize_text_field($new_instance['number_of_columns']) : '';
 
         $key = 'product-box#' . $old_instance['category_select'];
         $this->cache->redis->del($key);

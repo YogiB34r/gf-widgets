@@ -100,7 +100,9 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
                     $product_count = $category_term->count;
                 }
 
-                
+                if (isset($instance['number_of_columns']) && !empty($instance['number_of_columns'])) {
+                    $columns = $instance['number_of_columns'];
+                }
                 ?>
 
                 <div class="gf-product-slider-wrapper">
@@ -112,6 +114,16 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
                            type="text"
                            name="<?php echo esc_attr($this->get_field_name('slider_title')); ?>"
                            value="<?php echo esc_attr($slider_title); ?>">
+
+                    <label for="<?php echo esc_attr($this->get_field_id('number_of_columns')); ?>">
+                        <?php esc_attr_e('Number of columns (Max 6)', 'gf_product_slider_widget_domain'); ?>
+                    </label>
+                    <input class="gf-number-of-columns widefat"
+                           id="<?php echo esc_attr($this->get_field_id('number_of_columns')); ?>"
+                           type="number"
+                           name="<?php echo esc_attr($this->get_field_name('number_of_columns')); ?>"
+                           value="<?php echo esc_attr($columns); ?>">
+
                     <label for="<?php echo esc_attr($this->get_field_id('category_select')); ?>">
                         <?php esc_attr_e('Select category:', 'gf_product_slider_without_tabs_widget_domain'); ?>
                     </label>
@@ -148,6 +160,7 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
                             </option>
                         <?php endforeach; ?>
                     </select>
+
                 </div>
 
                 <?php

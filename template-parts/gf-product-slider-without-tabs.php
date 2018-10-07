@@ -19,6 +19,7 @@ if (wp_is_mobile()) {
 }
 ?>
 <div id="<?php echo $random_id; ?>" class="gf-product-slider" data-slider-item-count="<?=$columnCount?>">
+
     <div class="row gf-product-slider__header gf-product-slider__header--without-tabs">
         <h3 class="gf-product-slider__header__title"><a href="<?= $category_link ?>"><?= $slider_title ?></a></h3>
 
