@@ -21,9 +21,8 @@ if (wp_is_mobile()) {
 <div id="<?php echo $random_id; ?>" class="gf-product-slider" data-slider-item-count="<?=$columnCount?>">
 
     <div class="row gf-product-slider__header gf-product-slider__header--without-tabs">
-        <h3 class="gf-product-slider__header__title col-6"><a href="<?= $category_link ?>"><?= $slider_title ?></a></h3>
-
-        <div class="gf-product-slider__header__controls col-6 gf-product-slider__header__controls--without-tabs">
+        <h3 class="gf-product-slider__header__title"><a href="<?= $category_link ?>"><?= $slider_title ?></a></h3>
+        <div class="gf-product-slider__header__controls gf-product-slider__header__controls--without-tabs">
           <a class="product-slider__control-prev gf-product-slider__header-control" href="#" role="button">
               <i class="fas fa-angle-left product-slider__control-prev-icon"></i>
             </a>
@@ -32,7 +31,6 @@ if (wp_is_mobile()) {
             </a>
         </div>
     </div>
-
     <div class="slider-inner without-tabs">
         <?php
         $args = array('post_type' => 'product', 'posts_per_page' => $itemLimit, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
