@@ -7,7 +7,7 @@
     <div class="carousel-inner">
         <?php if (isset($instance['image_1_value']) && !empty($instance['image_1_value']) ):?>
         <div class="carousel-item active">
-            <a href="<?= $instance['image_1_link'] ?>" target="_blank">
+            <a href="<?= $instance['image_1_link'] ?>" >
                 <?php list($width_slider_1, $height_slider_1) = getimagesize($instance['image_1_value']); ?>
                 <img class="d-block w-100" src="<?= $instance['image_1_value'] ?>" alt="First slide" width="<?=$width_slider_1?>" height="auto">
             </a>
@@ -15,7 +15,7 @@
         <?php endif;?>
         <?php if (isset($instance['image_2_value']) && !empty($instance['image_2_value']) ):?>
         <div class="carousel-item">
-            <a href="<?= $instance['image_2_link'] ?>" target="_blank">
+            <a href="<?= $instance['image_2_link'] ?>" >
                 <?php list($width_slider_2, $height_slider_2) = getimagesize($instance['image_2_value']); ?>
                 <img class="d-block w-100" src="<?= $instance['image_2_value'] ?>" alt="First slide" width="<?=$width_slider_2?>" height="auto">
             </a>
@@ -23,7 +23,7 @@
         <?php endif;?>
         <?php if (isset($instance['image_3_value']) && !empty($instance['image_3_value']) ):?>
         <div class="carousel-item">
-            <a href="<?= $instance['image_3_link'] ?>" target="_blank">
+            <a href="<?= $instance['image_3_link'] ?>">
                 <?php list($width_slider_3, $height_slider_3) = getimagesize($instance['image_3_value']); ?>
                 <img class="d-block w-100" src="<?= $instance['image_3_value'] ?>" alt="First slide" width="<?=$width_slider_2?>" height="auto">
             </a>

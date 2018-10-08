@@ -30,7 +30,7 @@ $category_link_6 = get_term_link($category_term_4->term_id);
     </div>
 
     <div class="col-6 gf-image-banners__item">
-        <a href="<?= $category_link_2 ?>" target="_blank">
+        <a href="<?= $category_link_2 ?>">
             <?php
             if (!empty($instance['image_banner_2_value'])) {
                 list($width_2, $height_2) = getimagesize($instance['image_banner_2_value']);
@@ -39,7 +39,7 @@ $category_link_6 = get_term_link($category_term_4->term_id);
         </a>
     </div>
     <div class="col-6 gf-image-banners__item">
-        <a href="<?= $category_link_3 ?>" target="_blank">
+        <a href="<?= $category_link_3 ?>">
             <?php
             if (!empty($instance['image_banner_3_value'])) {
                 list($width_3, $height_3) = getimagesize($instance['image_banner_3_value']);
@@ -49,7 +49,7 @@ $category_link_6 = get_term_link($category_term_4->term_id);
     </div>
 
     <div class="row gf-image-banners-wider">
-        <a href="<?= $category_link_4 ?>" target="_blank">
+        <a href="<?= $category_link_4 ?>">
             <?php
             if (!empty($instance['image_banner_4_value'])) {
                 list($width_4, $height_4) = getimagesize($instance['image_banner_4_value']);
@@ -59,7 +59,7 @@ $category_link_6 = get_term_link($category_term_4->term_id);
     </div>
 
     <div class="col-6 gf-image-banners__item">
-        <a href="<?= $category_link_5 ?>" target="_blank">
+        <a href="<?= $category_link_5 ?>">
             <?php
             if (!empty($instance['image_banner_5_value'])) {
                 list($width_5, $height_5) = getimagesize($instance['image_banner_5_value']);
@@ -68,7 +68,7 @@ $category_link_6 = get_term_link($category_term_4->term_id);
         </a>
     </div>
     <div class="col-6 gf-image-banners__item">
-        <a href="<?= $category_link_6 ?>" target="_blank">
+        <a href="<?= $category_link_6 ?>">
             <?php
             if (!empty($instance['image_banner_6_value'])) {
                 list($width_6, $height_6) = getimagesize($instance['image_banner_6_value']);
