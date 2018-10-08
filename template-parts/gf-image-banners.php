@@ -70,7 +70,7 @@ $category_link_6 = get_term_link($category_term_4->term_id);
     <div class="col-6 gf-image-banners__item">
         <a href="<?= $category_link_6 ?>" target="_blank">
             <?php
-            if (!empty($instance['image_banner_1_value'])) {
+            if (!empty($instance['image_banner_6_value'])) {
                 list($width_6, $height_6) = getimagesize($instance['image_banner_6_value']);
             } ?>
             <img src="<?= $instance['image_banner_6_value'] ?>" width="<?= $width_6 ?>" height="auto">
