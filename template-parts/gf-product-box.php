@@ -10,7 +10,7 @@ if ($category_term) {
     }
 
 }
-$columnCount = (int)$instance['number_of_columns'];
+$columnCount = (isset($instance['number_of_columns'])) ? (int) $instance['number_of_columns'] : 4;
 if ($columnCount === 0) {
     $columnCount = 4;
 }
