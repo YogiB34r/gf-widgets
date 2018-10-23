@@ -15,7 +15,7 @@ $category_term_5 = get_term_by('slug', $instance['category_select_5'], 'product_
 $category_link_5 = get_term_link($category_term_5->term_id);
 
 $category_term_6 = get_term_by('slug', $instance['category_select_6'], 'product_cat');
-$category_link_6 = get_term_link($category_term_5->term_id);
+$category_link_6 = get_term_link($category_term_6->term_id);
 ?>
 
 <div class="row gf-image-banners">
