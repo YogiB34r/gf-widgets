@@ -2,7 +2,7 @@
     <div class="panel-body gf-newsletter__body">
         <p class="gf-newsletter__title"></p>
         <div class="tnp tnp-subscription-minimal ">
-            <form action="https://nss-devel.ha.rs/?na=s" method="post">
+            <form action="https://nonstopshop.rs/?na=s" method="post">
                 <input type="hidden" name="nr" value="minimal">
                 <input type="hidden" name="nlang" value="">
                 <input class="tnp-email" type="email" required="" name="ne" value="" placeholder="Email" title="Ovo polje mora biti popunjeno" oninvalid="this.setCustomValidity('Neispravna email adresa')" oninput="this.setCustomValidity('')">
