@@ -9,7 +9,7 @@ if (isset($instance['slider_title']) and !empty($instance['slider_title'])) {
 } else {
     $slider_title = $category_term->name;
 }
-$columnCount = (int) $instance['number_of_columns'];
+$columnCount = (int)$instance['number_of_columns'];
 if ($columnCount === 0) {
     $columnCount = 5;
 }
@@ -20,19 +20,25 @@ if ($columnCount === 0) {
         <h3 class="gf-product-slider__header__title"><a href="<?= $category_link ?>"><?= $slider_title ?></a></h3>
 
         <div class="gf-product-slider__header__controls gf-product-slider__header__controls--without-tabs">
-          <a class="product-slider__control-prev gf-product-slider__header-control" href="#" role="button">
-              <i class="fas fa-angle-left product-slider__control-prev-icon"></i>
+            <a class="product-slider__control-prev gf-product-slider__header-control" href="#" role="button">
+                <i class="fas fa-angle-left product-slider__control-prev-icon"></i>
             </a>
             <a class="product-slider__control-next gf-product-slider__header-control" href="#" role="button">
-              <i class="fas fa-angle-right product-slider__control-next-icon"></i>
+                <i class="fas fa-angle-right product-slider__control-next-icon"></i>
             </a>
         </div>
     </div>
 
     <div class="slider-inner without-tabs">
         <?php
-        $args = array('post_type' => 'product', 'posts_per_page' => 16, 'product_cat' => $instance['category_select'], 'orderby' => 'name',
+        $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => 16,
+            'product_cat' => $instance['category_select'],
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
             'meta_query' => array(
+
                 array(
                     'key' => '_stock_status',
                     'value' => 'instock'
@@ -56,4 +62,4 @@ if ($columnCount === 0) {
         <?php wp_reset_query(); ?>
     </div><!--    slider-inner-->
 </div>
-<script>var gfSliderColumnCount=<?=$columnCount?>;</script>
+<script>var gfSliderColumnCount =<?=$columnCount?>;</script>
