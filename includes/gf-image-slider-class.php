@@ -41,96 +41,60 @@ class gf_image_slider_widget extends WP_Widget
     public function form($instance)
     {
 
-        $image_1 = !empty($instance['image_1']) ? $instance['image_1'] : esc_html__('', 'gf_image_slider_widget_domain');
-        $image_1_value = !empty($instance['image_1_value']) ? $instance['image_1_value'] : esc_html__('', 'gf_image_slider_widget_domain');
-        $image_1_link = !empty($instance['image_1_link']) ? $instance['image_1_link'] : esc_html__('https://', 'gf_image_slider_widget_domain');
+//        $image_1 = !empty($instance['image_1']) ? $instance['image_1'] : esc_html__('', 'gf_image_slider_widget_domain');
+//        $image_1_value = !empty($instance['image_1_value']) ? $instance['image_1_value'] : esc_html__('', 'gf_image_slider_widget_domain');
+//        $image_1_link = !empty($instance['image_1_link']) ? $instance['image_1_link'] : esc_html__('https://', 'gf_image_slider_widget_domain');
 
-        $image_2 = !empty($instance['image_2']) ? $instance['image_2'] : esc_html__('Image 2', 'gf_image_slider_widget_domain');
-        $image_2_value = !empty($instance['image_2_value']) ? $instance['image_2_value'] : esc_html__('', 'gf_image_slider_widget_domain');
-        $image_2_link = !empty($instance['image_2_link']) ? $instance['image_2_link'] : esc_html__('https://', 'gf_image_slider_widget_domain');
+//        $image_2 = !empty($instance['image_2']) ? $instance['image_2'] : esc_html__('Image 2', 'gf_image_slider_widget_domain');
+//        $image_2_value = !empty($instance['image_2_value']) ? $instance['image_2_value'] : esc_html__('', 'gf_image_slider_widget_domain');
+//        $image_2_link = !empty($instance['image_2_link']) ? $instance['image_2_link'] : esc_html__('https://', 'gf_image_slider_widget_domain');
 
-        $image_3 = !empty($instance['image_3']) ? $instance['image_3'] : esc_html__('Image 3', 'gf_image_slider_widget_domain');
-        $image_3_value = !empty($instance['image_3_value']) ? $instance['image_3_value'] : esc_html__('', 'gf_image_slider_widget_domain');
-        $image_3_link = !empty($instance['image_3_link']) ? $instance['image_3_link'] : esc_html__('https://', 'gf_image_slider_widget_domain');
-        ?>
+//        $image_3 = !empty($instance['image_3']) ? $instance['image_3'] : esc_html__('Image 3', 'gf_image_slider_widget_domain');
+//        $image_3_value = !empty($instance['image_3_value']) ? $instance['image_3_value'] : esc_html__('', 'gf_image_slider_widget_domain');
+//        $image_3_link = !empty($instance['image_3_link']) ? $instance['image_3_link'] : esc_html__('https://', 'gf_image_slider_widget_domain');
 
-        <div>
-            <input
-                    class="gf-upload-image-1"
-                    id="upload-image-1"
-                    name="<?php echo esc_attr($this->get_field_name('image_1')); ?>"
-                    type="button"
-                    value="Izaberite sliku">
-            <input type="button" id="gf-remove-image-1" name="remove-image" value="Obriši sliku">
-            <input class="image_1_value"
-                   id=" <?php echo esc_attr($this->get_field_id('image_1_value')); ?>"
-                   type="hidden"
-                   name="<?php echo esc_attr($this->get_field_name('image_1_value')); ?>"
-                   value="<?php echo esc_attr($image_1_value); ?>">
-            <div class="row">
-                <label for="<?php echo esc_attr($this->get_field_id('image_1_link')); ?>">
-                    <?php esc_attr_e('Link to:', 'gf_image_slider_widget_domain'); ?>
-                </label>
-                <input class=""
-                       id=" <?php echo esc_attr($this->get_field_id('image_1_link')); ?>"
-                       type="text"
-                       name="<?php echo esc_attr($this->get_field_name('image_1_link')); ?>"
-                       value="<?php echo esc_attr($image_1_link); ?>">
+        $items = [];
+        for ($i=1; $i<=6; $i++) {
+            $items[$i]['image_' . $i] = !empty($instance['image_' . $i]) ? $instance['image_' . $i] : esc_html__('', 'gf_image_slider_widget_domain');
+            $items[$i]['image_' . $i . '_value'] = !empty($instance['image_' . $i . '_value']) ? $instance['image_' . $i . '_value'] : esc_html__('', 'gf_image_slider_widget_domain');
+            $items[$i]['image_' . $i . '_link'] = !empty($instance['image_' . $i . '_link']) ? $instance['image_' . $i . '_link'] : esc_html__('', 'gf_image_slider_widget_domain');
+        }
+
+
+        foreach ($items as $i => $item) {
+            if ($item['image_'. $i .'_value'] == '') {
+//                continue;
+            }
+            ?>
+            <div>
+                <input
+                        class="gf-upload-image-<?=$i?>"
+                        id="upload-image-<?=$i?>"
+                        name="<?php echo esc_attr($this->get_field_name('image_1')); ?>"
+                        type="button"
+                        value="Izaberite sliku">
+                <input type="button" id="gf-remove-image-<?=$i?>" name="remove-image" value="Obriši sliku">
+                <input class="image_<?=$i?>_value"
+                       id=" <?php echo esc_attr($this->get_field_id('image_'. $i .'_value')); ?>"
+                       type="hidden"
+                       name="<?php echo esc_attr($this->get_field_name('image_'. $i .'_value')); ?>"
+                       value="<?php echo esc_attr($item['image_'. $i .'_value']); ?>">
+                <div class="row">
+                    <label for="<?php echo esc_attr($this->get_field_id('image_'. $i .'_link')); ?>">
+                        <?php esc_attr_e('Link to:', 'gf_image_slider_widget_domain'); ?>
+                    </label>
+                    <input class=""
+                           id=" <?php echo esc_attr($this->get_field_id('image_'. $i .'_link')); ?>"
+                           type="text"
+                           name="<?php echo esc_attr($this->get_field_name('image_'. $i .'_link')); ?>"
+                           value="<?php echo esc_attr($item['image_'. $i .'_link']); ?>">
+                </div>
+                <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($item['image_'. $i .'_value']); ?>"></div>
             </div>
-            <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_1_value); ?>"></div>
-        </div>
-        <div>
-            <input
-                    class="gf-upload-image-2"
-                    id="upload-image-2"
-                    name="<?php echo esc_attr($this->get_field_name('image_2')); ?>"
-                    type="button"
-                    value="Izaberite sliku">
-            <input type="button" id="gf-remove-image-2" name="remove-image" value="Obriši sliku">
-            <input class="image_2_value"
-                   id=" <?php echo esc_attr($this->get_field_id('image_2_value')); ?>"
-                   type="hidden"
-                   name="<?php echo esc_attr($this->get_field_name('image_2_value')); ?>"
-                   value="<?php echo esc_attr($image_2_value); ?>">
-            <div class="row">
-                <label for="<?php echo esc_attr($this->get_field_id('image_2_link')); ?>">
-                    <?php esc_attr_e('Link to:', 'gf_image_slider_widget_domain'); ?>
-                </label>
-                <input class=""
-                       id=" <?php echo esc_attr($this->get_field_id('image_2_link')); ?>"
-                       type="text"
-                       name="<?php echo esc_attr($this->get_field_name('image_2_link')); ?>"
-                       value="<?php echo esc_attr($image_2_link); ?>">
-            </div>
-            <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_2_value); ?>"></div>
-        </div>
-        <div>
-            <input
-                    class="gf-upload-image-3"
-                    id="upload-image-3"
-                    name="<?php echo esc_attr($this->get_field_name('image_3')); ?>"
-                    type="button"
-                    value="Izaberite sliku">
-            <input type="button" id="gf-remove-image-3" name="remove-image" value="Obriši sliku">
-            <input class="image_3_value"
-                   id=" <?php echo esc_attr($this->get_field_id('image_3_value')); ?>"
-                   type="hidden"
-                   name="<?php echo esc_attr($this->get_field_name('image_3_value')); ?>"
-                   value="<?php echo esc_attr($image_3_value); ?>">
-            <div class="row">
-                <label for="<?php echo esc_attr($this->get_field_id('image_3_link')); ?>">
-                    <?php esc_attr_e('Link to:', 'gf_image_slider_widget_domain'); ?>
-                </label>
-                <input class=""
-                       id=" <?php echo esc_attr($this->get_field_id('image_3_link')); ?>"
-                       type="text"
-                       name="<?php echo esc_attr($this->get_field_name('image_3_link')); ?>"
-                       value="<?php echo esc_attr($image_3_link); ?>">
-                <div class="gf-image-preview-wrapper"><img src="<?= esc_attr($image_3_value); ?>"></div>
-            </div>
-        </div>
+            <?php
 
-        <?php
+        }
+
     }
 
     /**
@@ -146,6 +110,8 @@ class gf_image_slider_widget extends WP_Widget
     public function update($new_instance, $old_instance)
     {
         $instance = array();
+        var_dump($new_instance);
+        die();
         $instance['image_1'] = (!empty($new_instance['image_1'])) ? sanitize_text_field($new_instance['image_1']) : '';
         $instance['image_1_value'] = (!empty($new_instance['image_1_value'])) ? sanitize_text_field($new_instance['image_1_value']) : '';
         $instance['image_1_link'] = (!empty($new_instance['image_1_link'])) ? sanitize_text_field($new_instance['image_1_link']) : '';

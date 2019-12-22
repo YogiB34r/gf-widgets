@@ -247,9 +247,9 @@ class gf_product_slider_widget extends WP_Widget
      */
     public function update($new_instance, $old_instance)
     {
-        global $slider_id;
         $instance = array();
         $instance['slider_title'] = (!empty($new_instance['slider_title'])) ? sanitize_text_field($new_instance['slider_title']) : '';
+        $instance['id'] = $this->id;
         $instance['number_of_columns'] = (!empty($new_instance['number_of_columns'])) ? sanitize_text_field($new_instance['number_of_columns']) : '';
         $instance['tab_1'] = (!empty($new_instance['tab_1'])) ? sanitize_text_field($new_instance['tab_1']) : '';
         $instance['tab_2'] = (!empty($new_instance['tab_2'])) ? sanitize_text_field($new_instance['tab_2']) : '';

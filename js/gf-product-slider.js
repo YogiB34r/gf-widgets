@@ -1,16 +1,21 @@
+// this content is now in gf-front.js
 jQuery(document).ready(function($) {
   //don't start on wrong pages
   if (typeof gfSliderColumnCount !== "undefined") {
 
 		//@Important activate slider after tab is displayed in order to have access to proper width
-		$("#tabs").tabs({
+		$(".tabs").tabs({
 			activate: function(event, ui) {
 				if (!$(ui.newPanel.selector).hasClass('slick-initialized')) {
 					startSlider(ui.newPanel.selector);
 				}
 			}
 		});
-		startSlider('#tabs-1');
+		$('.gf-slider-tabs').each(function (i, v) {
+		    console.log($(v));
+		    console.log($(v).attr('id'));
+            startSlider('#tabs-1-'+ $(this).attr('id'))
+        });
 		hookSliderEvents();
 		startSlider('.without-tabs');
   }
