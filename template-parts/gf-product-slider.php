@@ -1,4 +1,5 @@
 <?php
+$random_id = rand();
 $columnCount = (int)$instance['number_of_columns'];
 if ($columnCount === 0) {
     $columnCount = 4;
@@ -10,8 +11,8 @@ if (wp_is_mobile()) {
 $link_term = get_term_by('slug', $instance['link_select'], 'product_cat');
 $category_link = get_term_link($link_term->term_id);
 ?>
-<div id="<?php echo $instance['id']; ?>" class="gf-product-slider gf-slider-tabs" data-slider-item-count="<?= $columnCount ?>">
-    <div class="tabs">
+<div id="<?php echo $random_id; ?>" class="gf-product-slider" data-slider-item-count="<?= $columnCount ?>">
+    <div id="tabs">
         <div class="row gf-product-slider__header">
             <h3 class="gf-product-slider__header__title"><a href="<?= $category_link ?>"><?= $instance['slider_title'] ?></a></h3>
             <?php if (isset($instance['tab_1']) && !empty(($instance['tab_1'])) ||
@@ -23,27 +24,27 @@ $category_link = get_term_link($link_term->term_id);
                     <ul>
                         <?php if (isset($instance['tab_1']) and !empty($instance['tab_1'])): ?>
                             <li>
-                                <a href="#tabs-1<?='-' . $instance['id']?>"><?= get_term_by('slug', $instance['tab_1'], 'product_cat')->name ?></a>|
+                                <a href="#tabs-1"><?= get_term_by('slug', $instance['tab_1'], 'product_cat')->name ?></a>|
                             </li>
                         <?php endif; ?>
                         <?php if (isset($instance['tab_2']) and !empty($instance['tab_2'])): ?>
                             <li>
-                                <a href="#tabs-2<?='-' . $instance['id']?>"><?= get_term_by('slug', $instance['tab_2'], 'product_cat')->name ?></a>|
+                                <a href="#tabs-2"><?= get_term_by('slug', $instance['tab_2'], 'product_cat')->name ?></a>|
                             </li>
                         <?php endif; ?>
                         <?php if (isset($instance['tab_3']) and !empty($instance['tab_3'])): ?>
                             <li>
-                                <a href="#tabs-3<?='-' . $instance['id']?>"><?= get_term_by('slug', $instance['tab_3'], 'product_cat')->name ?></a>|
+                                <a href="#tabs-3"><?= get_term_by('slug', $instance['tab_3'], 'product_cat')->name ?></a>|
                             </li>
                         <?php endif; ?>
                         <?php if (isset($instance['tab_4']) and !empty($instance['tab_4'])): ?>
                             <li>
-                                <a href="#tabs-4<?='-' . $instance['id']?>"><?= get_term_by('slug', $instance['tab_4'], 'product_cat')->name ?></a>|
+                                <a href="#tabs-4"><?= get_term_by('slug', $instance['tab_4'], 'product_cat')->name ?></a>|
                             </li>
                         <?php endif; ?>
                         <?php if (isset($instance['tab_5']) and !empty($instance['tab_5'])): ?>
                             <li>
-                                <a href="#tabs-5<?='-' . $instance['id']?>"><?= get_term_by('slug', $instance['tab_5'], 'product_cat')->name ?></a>|
+                                <a href="#tabs-5"><?= get_term_by('slug', $instance['tab_5'], 'product_cat')->name ?></a>|
                             </li>
                         <?php endif; ?>
                     </ul>
@@ -59,7 +60,7 @@ $category_link = get_term_link($link_term->term_id);
             </div>
         </div>
         <?php if (isset($instance['tab_1']) and !empty($instance['tab_1'])): ?>
-            <div id="tabs-1<?='-' . $instance['id']?>" class="slider-inner">
+            <div id="tabs-1" class="slider-inner">
                 <?php
                 $args = array(
                     'post_type' => 'product',
@@ -93,7 +94,7 @@ $category_link = get_term_link($link_term->term_id);
         <?php endif; ?>
 
         <?php if (isset($instance['tab_2']) and !empty($instance['tab_2'])): ?>
-            <div id="tabs-2<?='-' . $instance['id']?>" class="slider-inner">
+            <div id="tabs-2" class="slider-inner">
                 <?php
                 $args = array(
                     'post_type' => 'product',
@@ -127,7 +128,7 @@ $category_link = get_term_link($link_term->term_id);
         <?php endif; ?>
 
         <?php if (isset($instance['tab_3']) and !empty($instance['tab_3'])): ?>
-            <div id="tabs-3<?='-' . $instance['id']?>" class="slider-inner">
+            <div id="tabs-3" class="slider-inner">
                 <?php
                 $args = array(
                     'post_type' => 'product',
@@ -161,7 +162,7 @@ $category_link = get_term_link($link_term->term_id);
         <?php endif; ?>
 
         <?php if (isset($instance['tab_4']) and !empty($instance['tab_4'])): ?>
-            <div id="tabs-4<?='-' . $instance['id']?>" class="slider-inner">
+            <div id="tabs-4" class="slider-inner">
                 <?php
                 $args = array(
                     'post_type' => 'product',
@@ -195,7 +196,7 @@ $category_link = get_term_link($link_term->term_id);
         <?php endif; ?>
 
         <?php if (isset($instance['tab_5']) and !empty($instance['tab_5'])): ?>
-            <div id="tabs-5<?='-' . $instance['id']?>" class="slider-inner">
+            <div id="tabs-5" class="slider-inner">
                 <?php
                 $args = array(
                     'post_type' => 'product',
