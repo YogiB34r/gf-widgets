@@ -5,17 +5,18 @@ class gf_product_slider_without_tabs_widget extends WP_Widget
     private $cache;
 
     /**
+     * @DEPRECATED
      * Register widget with WordPress.
      */
     function __construct()
     {
-        parent::__construct(
-            'gf_product_slider_without_tabs_widget', // Base ID
-            esc_html__('GF Product Slider Widget (without tabs)', 'gf_widgets_domain'), // Name
-            array('description' => esc_html__('Product Slider Without Tabs', 'gf_widgets_domain'),) // Args
-        );
-
-        $this->cache = new GF_Cache();
+//        parent::__construct(
+//            'gf_product_slider_without_tabs_widget', // Base ID
+//            esc_html__('GF Product Slider Widget (without tabs)', 'gf_widgets_domain'), // Name
+//            array('description' => esc_html__('Product Slider Without Tabs', 'gf_widgets_domain'),) // Args
+//        );
+//
+//        $this->cache = new GF_Cache();
     }
 
     /**
